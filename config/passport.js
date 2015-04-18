@@ -24,14 +24,14 @@ module.exports.passport = {
 //  },
 
   twitter: {
-    name: 'Twitter',
+    name: 'twitter',
     protocol: 'oauth',
     strategy: require('passport-twitter').Strategy,
     options: {
       consumerKey: 'utROEvFrWDGZ1MR6L1sGsEBFT',
       consumerSecret: '53W18dU88V88XYhGE37Z5OO2PId1atGetpOS3q7j6iEOFsNlj2'
     }
-  }//,
+  },
 
 //  github: {
 //    name: 'GitHub',
