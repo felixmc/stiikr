@@ -4,9 +4,7 @@ module.exports = {
 
 	index: function(req, res) {
 	
-		console.log( req.session );
-		
-		res.render('home');
+		res.render('home', { user: req.session.user });
 	}
 	
 };
