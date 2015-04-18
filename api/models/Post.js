@@ -1,6 +1,8 @@
 // Post Entity
-module.exports = {
-
+var Post = {
+  connection: 'mongo',
+	schema: true,
+	
 	attributes: {
 		
 		title: {
@@ -32,3 +34,5 @@ module.exports = {
 	}
 	
 };
+
+module.exports = Post;
