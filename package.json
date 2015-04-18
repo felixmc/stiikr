@@ -5,6 +5,7 @@
   "description": "ideas that stick",
   "keywords": [],
   "dependencies": {
+    "bcryptjs": "^2.1.0",
     "ejs": "~0.8.4",
     "express-handlebars": "^2.0.0",
     "grunt": "0.4.2",
