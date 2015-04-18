@@ -16,6 +16,6 @@ module.exports.views = {
 	engine:    'handlebars',
 	extension: 'hbs',
   partials:  'partials',
-	layout:    'layout.hbs'
+	layout:    'layout'
 
 };
