@@ -6,31 +6,8 @@
  * the basics of Passport.js to work.
  */
 var AuthController = {
-  /**
-   * Render the login page
-   *
-   * The login form itself is just a simple HTML form:
-   *
-      <form role="form" action="/auth/local" method="post">
-        <input type="text" name="identifier" placeholder="Username or Email">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Sign in</button>
-      </form>
-   *
-   * You could optionally add CSRF-protection as outlined in the documentation:
-   * http://sailsjs.org/#!documentation/config.csrf
-   *
-   * A simple example of automatically listing all available providers in a
-   * Handlebars template would look like this:
-   *
-      {{#each providers}}
-        <a href="/auth/{{slug}}" role="button">{{name}}</a>
-      {{/each}}
-   *
-   * @param {Object} req
-   * @param {Object} res
-   */
-  login: function (req, res) {
+
+	login: function (req, res) {
     var strategies = sails.config.passport
       , providers  = {};
 
