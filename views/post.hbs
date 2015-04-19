@@ -2,7 +2,9 @@
 {{#if user}}
 <p>Welcome {{user.username}}</p>
 <p><a href="/logout">logout</a></p>
-
+{{else}}
+<p>Welcome! <a href="/auth/twitter">login</a></p>
+{{/if}}
 <hr />
 	<div class="post" data-id="{{id}}">
 			<h3><a href="/post/{{id}}">{{title}}</a></h3>
