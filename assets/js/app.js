@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$('body').on('click', '.upvote', {}, function() {
+	$(document.body).on('click', '.upvote', function() {
 		var $this = $(this);
 		var $post = $this.parent('.post');
 		$.post({
