@@ -14,12 +14,14 @@ function handleVote(req, res, voteValue) {
 					var newValue = vote.value == voteValue ? 0 : voteValue;
 					Vote.update(vote.id, { value: newValue })
 					.exec(function(err, newVote) {
+						newVote = newVote[0];
 						if (err) {
 							sails.log.error(err);
 							res.serverError();
 						} else {
 							console.log('voted!');
 							console.log(newVote);
+							console.log(vote);
 							console.log(post.calculateScore() + (newVote.value - vote.value));
 							req.socket.emit('voteUpdate', { post: post.id, score: post.calculateScore() + (newVote.value - vote.value) });
 							res.ok();
