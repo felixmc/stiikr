@@ -28,7 +28,7 @@
 	{{#each posts}}
 		<div class="post" data-id="{{this.id}}">
 			<h4><a href="/post/{{this.id}}">{{this.title}}</a></h4>
-			<p><span class="score">{{this.score}}</span> <a href="#" class="upvote">upvote</a> <a href="#" class="downvote">downvote</a> <a href="/post/{{this.id}}#disqus_thread" data-disqus-identifier="{{this.id}}"></a> <time class="timeago" datetime="{{this.createdAt.toISOString()}}"></time></p>
+			<p><span class="score">{{this.score}}</span> <a href="#" class="upvote">upvote</a> <a href="#" class="downvote">downvote</a> <a href="/post/{{this.id}}#disqus_thread" data-disqus-identifier="{{this.id}}"></a> <time class="timeago" datetime="{{this.createdAtISO}}"></time></p>
 			<p>{{this.content}}</p>
 			<p>by <a href="//twitter.com/{{this.author.username}}" target="_blank">@{{this.author.username}}</a></p>
 		</div>

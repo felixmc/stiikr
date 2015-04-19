@@ -60,6 +60,7 @@ module.exports = {
 			
 			_.each(posts, function(post) {
 				post.calculateScore();
+				post.createdAtISO = post.createdAt.toISOString();
 			});
 			
 			res.render('home', { user: req.session.user, posts: posts });
