@@ -17,9 +17,9 @@ module.exports = {
 		
 		console.log(req.session);
 
-		console.log(req.param('title'));
 		
-		if (req.method === 'POST' && req.authenticated) {
+		
+		if (req.method === 'POST' && req.session.authenticated) {
 
 			Post.create({
 				title:   req.param('title'),
