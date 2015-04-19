@@ -20,6 +20,7 @@ function handleVote(req, res, voteValue) {
 						} else {
 							console.log('voted!');
 							console.log(newVote);
+							console.log(post.calculateScore() + (newVote.value - vote.value));
 							req.socket.emit('voteUpdate', { post: post.id, score: post.calculateScore() + (newVote.value - vote.value) });
 							res.ok();
 						}
