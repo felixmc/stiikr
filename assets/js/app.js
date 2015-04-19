@@ -17,7 +17,7 @@ $(document).ready(function() {
 				console.log(data);
 				$('.score', $post).text(data);
 				$post.removeClass('downvoted').toggleClass('upvoted');
-			},
+			}
 		}).always(function(data) {
 			console.log('always! ' + url);
 		});
