@@ -25,7 +25,7 @@ var Post = {
 			via: 'post'
 		},
 		
-		score: function() {
+		calculateScore: function() {
 			return _.reduceRight(this.votes, function(sum, next) {
 				return sum + next.value;
 			}, 0);
