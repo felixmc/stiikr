@@ -8,7 +8,6 @@ function handleVote(req, res, voteValue) {
 
 			if (post) {
 				post = post[0];
-					
 				var vote = _.find(post.votes, { user: req.session.user.id });
 
 				if (vote) {
@@ -19,7 +18,7 @@ function handleVote(req, res, voteValue) {
 							sails.log.error(err);
 							res.serverError();
 						} else
-							res.send('vote successfully updated');
+							res.send(post.calculateScore() + newValue);
 					});
 				} else {
 					Vote.create({
@@ -31,7 +30,7 @@ function handleVote(req, res, voteValue) {
 							sails.log.error(err);
 							res.serverError();
 						} else
-							res.send('vote successfully created');
+							res.send(post.calculateScore() + voteValue);
 					});
 				}
 			} else {

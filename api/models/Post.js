@@ -29,6 +29,7 @@ var Post = {
 			this.score = _.reduceRight(this.votes, function(sum, next) {
 				return sum + next.value;
 			}, 0);
+			return this.score;
 		}
 		
 	}

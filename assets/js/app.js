@@ -8,6 +8,7 @@ $(document).ready(function() {
 		$.post( '/upvote/' + $post.attr('data-id'),
 		function(data) {
 			console.log(data);
+			$('.score', $post).text(data);
 			$post.removeClass('downvoted').addClass('upvoted');
 		});
 	});
