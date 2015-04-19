@@ -2,6 +2,8 @@
 
 $(document).ready(function() {
 
+	$("time.timeago").timeago();	
+	
 	$(document.body).on('click', '.upvote, .downvote', function(e) {
 		var $this = $(this);
 		var $post = $this.closest('.post');
