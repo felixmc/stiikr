@@ -6,7 +6,7 @@
 <hr />
 
 <form action="/new" method="POST">
-	<h3>New Idea</h3>
+	<h2>New Idea</h2>
 	<p>
 		<input type="text" name="title" placeholder="title" />
 	</p>
@@ -31,5 +31,6 @@
 			<p>{{this.content}}</p>
 			<p>by <a href="#">{{this.author.username}}</a></p>			
 		</div>
+		<hr />
 	{{/each}}
 {{/if}}
