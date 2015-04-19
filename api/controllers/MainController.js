@@ -9,6 +9,7 @@ module.exports = {
 		console.log(sails.views);
 		
 		Post.find({ limit: 10, sort: 'createdAt DESC' })
+		.populate('author')
 		.exec(function(err, posts) {
 			if (err)
 				sails.logger.error(err);
