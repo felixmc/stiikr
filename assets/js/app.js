@@ -12,12 +12,7 @@ $(document).ready(function() {
 			console.log(data);
 			$('.score', $post).text(data);
 			$post.removeClass('downvoted').addClass('upvoted');
-		}).done(function(data) {
-			console.log('done! ' + data);
-		}).fail(function(e) {
-    	alert( "error" );
-			console.log(e);
-  	});
+		});
 		
 		return false;
 	});
