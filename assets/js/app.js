@@ -5,9 +5,8 @@ $(document).ready(function() {
 		var $post = $this.closest('.post');
 		console.log($post);
 		console.log($post.attr('data-id'));
-		$.post({
-			url: '/upvote/' + $post.attr('data-id')
-		}, function(data) {
+		$.post( '/upvote/' + $post.attr('data-id'),
+		function(data) {
 			console.log(data);
 			$post.removeClass('downvoted').addClass('upvoted');
 		});
