@@ -14,8 +14,17 @@ module.exports = {
 		console.log(req.method);
 		
 		console.log(req.body);
+
+		console.log(req.param('title'));
 		
-		res.send("new");
+		if (req.method === 'POST' && req.authenticated) {
+			res.send("new");			
+		} else {
+			res.notFound();
+		}
+
+		
+
 	}
 	
 };
