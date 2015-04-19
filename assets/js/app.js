@@ -23,6 +23,7 @@ $(document).ready(function() {
 	});
 	
 	io.socket.on('upvote', function(data) {
+		$('.post[data='+data.post+'] .score').text(data.score);
 		console.log(data);
 	});
 	
