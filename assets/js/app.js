@@ -6,12 +6,14 @@ $(document).ready(function() {
 		e.preventDefault();
 		
 		console.log('clicked!');
-		$.post('/upvote/' + $post.attr('data-id'),
-		function(data) {
-			console.log('success!');
-			console.log(data);
-			$('.score', $post).text(data);
-			$post.removeClass('downvoted').addClass('upvoted');
+		$.post({
+			url: '/upvote/' + $post.attr('data-id'),
+			success: function(data) {
+				console.log('success!');
+				console.log(data);
+				$('.score', $post).text(data);
+				$post.removeClass('downvoted').addClass('upvoted');
+			},
 		});
 		
 		return false;
