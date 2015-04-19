@@ -50,6 +50,7 @@ module.exports = {
 	index: function(req, res) {
 		Post.find({ limit: 10, sort: 'createdAt DESC' })
 		.populate('author')
+		.populate('votes')
 		.exec(function(err, posts) {
 			if (err)
 				sails.log.error(err);
