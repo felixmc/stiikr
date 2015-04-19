@@ -17,8 +17,10 @@ function handleVote(req, res, voteValue) {
 						if (err) {
 							sails.log.error(err);
 							res.serverError();
-						} else
+						} else {
+							console.log('voted!');
 							res.send(post.calculateScore() + newValue);
+						}
 					});
 				} else {
 					Vote.create({
@@ -29,8 +31,10 @@ function handleVote(req, res, voteValue) {
 						if (err) {
 							sails.log.error(err);
 							res.serverError();
-						} else
+						} else {
+							console.log('voted!');
 							res.send(post.calculateScore() + voteValue);
+						}
 					});
 				}
 			} else {
