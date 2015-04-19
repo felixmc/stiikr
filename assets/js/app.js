@@ -7,13 +7,13 @@ $(document).ready(function() {
 		var $post = $this.closest('.post');
 		
 		var url = '/'+$this.prop('class')+'/' + $post.attr('data-id');
-		console.log(url);
+//		console.log(url);
 		
 		io.socket.request({
 			url: url,
 			method: 'POST'
 		}, function (response) {
-			console.log('resp: ' + response);
+//			console.log('resp: ' + response);
 		});
 		
 		e.preventDefault();
@@ -24,7 +24,7 @@ $(document).ready(function() {
 	
 	io.socket.on('voteUpdate', function(data) {
 		$('.post[data-id="'+data.post+'"] .score').text(data.score);
-		console.log(data);
+//		console.log(data);
 	});
 	
 	
