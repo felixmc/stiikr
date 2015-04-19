@@ -8,7 +8,7 @@ function handleVote(req, res, voteValue) {
 
 			if (post) {
 				post = post[0];
-				console.log(post);
+//				console.log(post);
 					
 				var vote = _.find(post.votes, { user: req.session.user.id });
 
