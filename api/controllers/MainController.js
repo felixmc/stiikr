@@ -78,6 +78,7 @@ module.exports = {
 			} else if (post) {
 				post = post[0];
 				post.calculateScore();
+				post.createdAtISO = post.createdAt.toISOString();
 	
 				res.render('post', post);
 			} else {
