@@ -22,6 +22,8 @@ module.exports = {
 					sails.log.error(err);
 
 				if (post) {
+					console.log(post);
+					
 					var vote = _.find(post.votes, { user: req.session.user.id });
 
 					if (vote) {
