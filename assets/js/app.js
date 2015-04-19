@@ -25,7 +25,7 @@ $(document).ready(function() {
 				method: 'POST'
 			}, function (response) {
 				// Here's what the server responded with
-				console.log(response);
+				console.log('resp: ' + response);
 			});
 //		});
 		
