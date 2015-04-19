@@ -23,7 +23,7 @@ $(document).ready(function() {
 	});
 	
 	io.socket.on('voteUpdate', function(data) {
-		$('.post[data-id="'+data.post+'"] .score').text(data.score);
+		$('.post[data-id="' + data.post + '"] .score').text(data.score);
 //		console.log(data);
 	});
 	
