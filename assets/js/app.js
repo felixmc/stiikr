@@ -8,18 +8,20 @@ $(document).ready(function() {
 		console.log(url);
 		
 		console.log('clicked!');
-		$.ajax(url, {
-			method: 'POST'
+		$.post(url,// {
+//			method: 'POST'
 //			,
-//			success: function(data) {
-//				console.log('success!');
-//				console.log(data);
-//				$('.score', $post).text(data);
-//				$post.removeClass('downvoted').toggleClass('upvoted');
-//			}
-		}).always(function(data) {
-			console.log('always! ' + url);
+//			success: 
+					 function(data) {
+				console.log('success!');
+				console.log(data);
+				//$('.score', $post).text(data);
+				//$post.removeClass('downvoted').toggleClass('upvoted');
+		//	}
 		});
+			//.always(function(data) {
+//			console.log('always! ' + url);
+//		});
 		
 		e.preventDefault();
 		
