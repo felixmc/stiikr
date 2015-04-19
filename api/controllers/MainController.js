@@ -68,7 +68,9 @@ module.exports = {
 	},
 	
 	upvote: function(req, res) {
-		handleVote(req, res, 1);
+		req.socket.emit('news', { hello: 'world' });
+		res.ok();
+		//handleVote(req, res, 1);
 	},
 	
 	downvote: function(req, res) {
