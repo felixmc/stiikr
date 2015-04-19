@@ -26,7 +26,7 @@
 <h2>Posts</h2>
 {{#if posts}}
 	{{#each posts}}
-		<div data-id="{{this.id}}">
+		<div class="post" data-id="{{this.id}}">
 			<h4><a href="/post/{{this.id}}">{{this.title}}</a></h4>
 			<p><span class="score">{{this.score}}</span> <a href="#" class="upvote">upvote</a> <a href="#" class="downvote">downvote</a></p>
 			<p>{{this.content}}</p>
