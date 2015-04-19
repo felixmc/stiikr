@@ -16,7 +16,7 @@ $(document).ready(function() {
 				console.log('success!');
 				console.log(data);
 				$('.score', $post).text(data);
-				$post.removeClass('downvoted').addClass('upvoted');
+				$post.removeClass('downvoted').toggleClass('upvoted');
 			},
 		}).always(function(data) {
 			console.log('always! ' + url);
