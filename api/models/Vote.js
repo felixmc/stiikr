@@ -1,5 +1,5 @@
 var Vote = {
-	conenction: 'mongo',
+	connection: 'mongo',
 	schema: true,
 	
 	attributes: {
