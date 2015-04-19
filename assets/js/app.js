@@ -3,8 +3,10 @@ $(document).ready(function() {
 	$(document.body).on('click', '.upvote', function() {
 		var $this = $(this);
 		var $post = $this.closest('.post');
+		console.log('clicked!');
 		$.post( '/upvote/' + $post.attr('data-id'),
 		function(data) {
+			console.log('success!');
 			console.log(data);
 			$('.score', $post).text(data);
 			$post.removeClass('downvoted').addClass('upvoted');
