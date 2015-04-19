@@ -6,6 +6,8 @@ module.exports = {
 	
 //		console.log(req.session.user);
 
+		console.log(sails.views);
+		
 		res.render('home', { user: req.session.user });
 	},
 	
