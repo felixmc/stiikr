@@ -54,6 +54,10 @@ module.exports = {
 			if (err)
 				sails.log.error(err);
 			
+			_.each(posts, function(post) {
+				post.score = post.calculateScore();
+			});
+			
 			res.render('home', { user: req.session.user, posts: posts });
 		});
 	},
