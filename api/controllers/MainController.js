@@ -24,7 +24,11 @@ module.exports = {
 			
 			if (post) {
 			
+				var hasVote = _.contains(post.votes, { user: req.session.user.id });
+				
 //				post.votes.
+				
+				console.log('userid: ' + req.session.user.id);
 				console.log(post);
 				
 				res.send('success');
