@@ -66,6 +66,25 @@ module.exports = {
 		});
 	},
 	
+	post: function(req, res) {
+		Post.find(req.param('id'))
+		.populate('author')
+		.populate('votes')
+		.exec(function(err, post) {
+			if (err) {
+				sails.log.error(err);
+				res.serverError();
+			} else if (post) {
+				post = post[0];
+				post.calculateScore();
+	
+				res.render('post', post);
+			} else {
+				res.notFound();
+			}
+		});
+	},
+	
 	upvote: function(req, res) {
 		handleVote(req, res, 1);
 	},

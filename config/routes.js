@@ -16,8 +16,8 @@ module.exports.routes = {
   '/': 'MainController',
   'post /new': 'MainController.new',
 	'post /upvote/:id([0-9a-f]{24})': 'MainController.upvote',
-	'post /downvote/:id([0-9a-f]{24})': 'MainController.downvote',	
-	
+	'post /downvote/:id([0-9a-f]{24})': 'MainController.downvote',
+	'get /post/:id([0-9a-f]{24})': 'MainController.post',
 	
 	/* AUTH */
 	'get /login': 'AuthController.login',
