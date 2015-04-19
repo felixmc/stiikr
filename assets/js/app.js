@@ -17,6 +17,8 @@ $(document).ready(function() {
 				$('.score', $post).text(data);
 				$post.removeClass('downvoted').addClass('upvoted');
 			},
+		}).always(function(data) {
+			console.log('always!');
 		});
 		
 		return false;
