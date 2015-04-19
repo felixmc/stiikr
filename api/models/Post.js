@@ -12,7 +12,7 @@ var Post = {
 		
 		content: {
 			type: 'string',
-			required: false
+			required: true
 		},
 		
 		author: {

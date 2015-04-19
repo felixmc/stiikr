@@ -19,6 +19,7 @@ function handleVote(req, res, voteValue) {
 							res.serverError();
 						} else {
 							console.log('voted!');
+							console.log(vote);
 							res.send(post.calculateScore() + newValue);
 						}
 					});
@@ -33,6 +34,7 @@ function handleVote(req, res, voteValue) {
 							res.serverError();
 						} else {
 							console.log('voted!');
+							console.log(vote);
 							res.send(post.calculateScore() + voteValue);
 						}
 					});

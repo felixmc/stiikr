@@ -8,12 +8,10 @@ var Vote = {
 			required: true
 		},
 		user: {
-			model: 'User',
-			required: true
+			model: 'User'
 		},
 		post: {
-			model: 'Post',
-			required: true
+			model: 'Post'
 		}
 		
 	}
