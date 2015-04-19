@@ -10,7 +10,7 @@ $(document).ready(function() {
 		
 		console.log('clicked!');
 		$.post({
-			url: url,
+			url: "moo",
 			success: function(data) {
 				console.log('success!');
 				console.log(data);
