@@ -19,10 +19,6 @@ function handleVote(req, res, voteValue) {
 							sails.log.error(err);
 							res.serverError();
 						} else {
-							console.log('voted!');
-							console.log(newVote);
-							console.log(vote);
-							console.log(post.calculateScore() + (newVote.value - vote.value));
 							req.socket.emit('voteUpdate', { post: post.id, score: post.calculateScore() + (newVote.value - vote.value) });
 							res.ok();
 						}
@@ -37,8 +33,6 @@ function handleVote(req, res, voteValue) {
 							sails.log.error(err);
 							res.serverError();
 						} else {
-							console.log('voted!');
-							console.log(vote);
 							req.socket.emit('voteUpdate', { post: post.id, score: post.calculateScore() + voteValue });
 							res.ok();							
 						}
