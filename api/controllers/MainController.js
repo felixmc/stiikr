@@ -6,10 +6,10 @@ module.exports = {
 	
 //		console.log(req.session.user);
 
-		console.log(sails.views);
+//		console.log(sails.views);
 		
 		Post.find({ limit: 10, sort: 'createdAt DESC' })
-		.populate('author')
+		.populate('user')
 		.exec(function(err, posts) {
 			if (err)
 				sails.logger.error(err);
