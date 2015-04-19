@@ -1,8 +1,9 @@
 $(document).ready(function() {
 
-	$(document.body).on('click', '.upvote', function() {
+	$(document.body).on('click', '.upvote', function(e) {
 		var $this = $(this);
 		var $post = $this.closest('.post');
+		e.preventDefault() 
 		console.log('clicked!');
 		$.post('/upvote/' + $post.attr('data-id'),
 		function(data) {
@@ -16,6 +17,8 @@ $(document).ready(function() {
     	alert( "error" );
 			console.log(e);
   	});
+		
+		return false;
 	});
 	
 	
