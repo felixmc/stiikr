@@ -7,7 +7,7 @@ module.exports = {
 		.populate('author')
 		.exec(function(err, posts) {
 			if (err)
-				sails.logger.error(err);
+				sails.log.error(err);
 			
 			res.render('home', { user: req.session.user, posts: posts });
 		});
@@ -19,7 +19,7 @@ module.exports = {
 			.populate('votes')
 			.exec(function(err, post) {
 				if (err)
-					sails.logger.error(err);
+					sails.log.error(err);
 
 				if (post) {
 					var vote = _.find(post.votes, { user: req.session.user.id });
@@ -28,7 +28,7 @@ module.exports = {
 						Vote.update(vote.id, { value: vote.value == 1 ? 0 : 1 })
 						.exec(function(err, vote) {
 							if (err) {
-								sails.logger.error(err);
+								sails.log.error(err);
 								res.serverError();
 							} else
 								res.send('vote successfully updated');
@@ -40,7 +40,7 @@ module.exports = {
 							value: 1
 						}).exec(function(err, vote) {
 							if (err) {
-								sails.logger.error(err);
+								sails.log.error(err);
 								res.serverError();
 							} else
 								res.send('new vote successful');
@@ -68,7 +68,7 @@ module.exports = {
 				author:  req.session.user.id
 			}).exec(function(err, post) {
 				if (err)
-					sails.logger.error(err);
+					sails.log.error(err);
 				
 				console.log('new post:');
 				console.log(post);
