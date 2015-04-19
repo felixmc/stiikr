@@ -32,11 +32,7 @@ module.exports = {
 								res.serverError();
 							} else
 								res.send('vote successfully updated');
-						});						
-					});
-						
-					// if vote value is same, set vote value to 0
-					// else if value is different, change vote value				
+						});
 					} else {
 						Vote.create({
 							user:  req.session.user.id,
