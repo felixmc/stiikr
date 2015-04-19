@@ -34,6 +34,11 @@ module.exports = {
 								res.send('vote successfully updated');
 						});
 					} else {
+						console.log({
+							user:  req.session.user.id,
+							post:  post.id,
+							value: 1
+						});
 						Vote.create({
 							user:  req.session.user.id,
 							post:  post.id,
