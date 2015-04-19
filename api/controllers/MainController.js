@@ -20,7 +20,7 @@ function handleVote(req, res, voteValue) {
 						} else {
 							console.log('voted!');
 							console.log(vote);
-							req.socket.emit('voteUpdate', { post: post.id, score: post.calculateScore() + (vote.value == voteValue ? -voteValue : voteValue ) });
+							req.socket.emit('voteUpdate', { post: post.id, score: post.calculateScore() + (vote.value == voteValue ? voteValue : -voteValue ) });
 							res.ok();
 						}
 					});
