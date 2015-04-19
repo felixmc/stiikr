@@ -23,6 +23,12 @@ var Post = {
 		votes: {
 			collection: 'Vote',
 			via: 'post'
+		},
+		
+		score: function() {
+			return _.reduceRight(this.votes, function(sum, next) {
+				return sum + next.value;
+			}, 0);
 		}
 		
 	}
