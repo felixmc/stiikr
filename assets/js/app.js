@@ -5,11 +5,11 @@ $(document).ready(function() {
 		var $post = $this.closest('.post');
 		e.preventDefault();
 		
-		console.log('/upvote/' + $post.attr('data-id'));
+		var url = '/upvote/' + $post.attr('data-id');
 		
 		console.log('clicked!');
 		$.post({
-			url: '/upvote/' + $post.attr('data-id'),
+			url: url,
 			success: function(data) {
 				console.log('success!');
 				console.log(data);
