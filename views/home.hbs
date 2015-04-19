@@ -1,8 +1,19 @@
 <h1>Stiikr</h1>
-{{> ../test}}
 {{#if user}}
 <p>Welcome {{user.username}}</p>
 <p><a href="/logout">logout</a></p>
+<form action="/new" method="POST">
+	<h3>New Idea</h3>
+	<p>
+		<input type="text" name="title" placeholder="title" />
+	</p>
+	<p>
+		<textarea name="desc" placeholder="description"></textarea>
+	</p>
+	<p>
+		<input type="submit" value="post" />
+	</p>
+</form>
 {{else}}
 <p>Welcome! <a href="/login">login</a></p>
 {{/if}}
