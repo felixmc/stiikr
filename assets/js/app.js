@@ -6,6 +6,7 @@ $(document).ready(function() {
 		e.preventDefault();
 		
 		var url = '/upvote/' + $post.attr('data-id');
+		console.log(url);
 		
 		console.log('clicked!');
 		$.post({
