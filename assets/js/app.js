@@ -8,20 +8,16 @@ $(document).ready(function() {
 		console.log(url);
 		
 		console.log('clicked!');
-		$.post(url,// {
-//			method: 'POST'
-//			,
-//			success: 
-					 function(data) {
-				console.log('success!');
-				console.log(data);
+		var ajax = $.post(url, function(data) {
+			console.log('success!');
+			//console.log(data);
 				//$('.score', $post).text(data);
 				//$post.removeClass('downvoted').toggleClass('upvoted');
-		//	}
 		});
-			//.always(function(data) {
-//			console.log('always! ' + url);
-//		});
+		
+		ajax.done(function(data) {
+			console.log('done');
+		});
 		
 		e.preventDefault();
 		
