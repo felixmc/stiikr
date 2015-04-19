@@ -6,7 +6,7 @@ $(document).ready(function() {
 		var $this = $(this);
 		var $post = $this.closest('.post');
 		
-		var url = '/'+$this.getClass()+'/' + $post.attr('data-id');
+		var url = '/'+$this.prop('class')+'/' + $post.attr('data-id');
 		console.log(url);
 		
 		io.socket.request({
