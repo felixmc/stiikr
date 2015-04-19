@@ -20,8 +20,9 @@ $(document).ready(function() {
 			// socket.request() will respond with the first 3 users from your database.
 			// This will also automatically subscribe us to realtime updates for those 3 users
 			// as well as any new users added to the collection.
-			io.socket.request(url, {
-				limit: 3
+			io.socket.request({
+				url: url,
+				method: 'POST'
 			}, function (response) {
 				// Here's what the server responded with
 				console.log(response);
