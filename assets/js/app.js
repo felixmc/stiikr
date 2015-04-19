@@ -9,7 +9,8 @@ $(document).ready(function() {
 		console.log(url);
 		
 		console.log('clicked!');
-		$.post({
+		$.ajax({
+			method: 'POST',
 			url: url,
 			success: function(data) {
 				console.log('success!');
