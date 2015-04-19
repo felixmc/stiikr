@@ -20,7 +20,8 @@ function handleVote(req, res, voteValue) {
 						} else {
 							console.log('voted!');
 							console.log(vote);
-							res.send(post.calculateScore() + newValue);
+							req.socket.emit('upvote', { post: post.id, score: post.calculateScore() + newValue });
+							res.ok();
 						}
 					});
 				} else {
@@ -35,7 +36,8 @@ function handleVote(req, res, voteValue) {
 						} else {
 							console.log('voted!');
 							console.log(vote);
-							res.send(post.calculateScore() + voteValue);
+							req.socket.emit('upvote', { post: post.id, score: post.calculateScore() + voteValue });
+							res.ok();							
 						}
 					});
 				}
@@ -68,9 +70,7 @@ module.exports = {
 	},
 	
 	upvote: function(req, res) {
-		req.socket.emit('news', { hello: 'world' });
-		res.ok();
-		//handleVote(req, res, 1);
+		handleVote(req, res, 1);
 	},
 	
 	downvote: function(req, res) {

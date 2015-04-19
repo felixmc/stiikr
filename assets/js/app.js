@@ -22,7 +22,7 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	io.socket.on('news', function(data) {
+	io.socket.on('upvote', function(data) {
 		console.log(data);
 	});
 	
