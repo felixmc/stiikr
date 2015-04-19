@@ -10,7 +10,7 @@ $(document).ready(function() {
 		console.log(url);
 		
 //		console.log('clicked!');
-		var ajax = $.post(url, function(data) {
+		var ajax = $.post(url, function(data, status) {
 			console.log('success!');
 			//console.log(data);
 				//$('.score', $post).text(data);
@@ -18,10 +18,6 @@ $(document).ready(function() {
 		});
 		
 		console.log(ajax);
-		
-//		ajax.complete(function(data) {
-//			console.log('done');
-//		});
 		
 		e.preventDefault();
 		e.stopPropagation();
