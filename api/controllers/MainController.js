@@ -12,19 +12,12 @@ module.exports = {
 	},
 	
 	new: function(req, res) {
-
-
-		
-		console.log(req.session);
-
-		
 		
 		if (req.method === 'POST' && req.session.authenticated) {
 
 			Post.create({
 				title:   req.param('title'),
 				content: req.param('desc'),
-				created: new Date(),
 				author:  req.session.user.id
 			}).exec(function(err, post) {
 				if (err)
@@ -35,8 +28,7 @@ module.exports = {
 				
 				res.redirect('/');
 			});
-			
-			res.send("new");			
+
 		} else {
 			res.notFound();
 		}
