@@ -13,6 +13,8 @@ module.exports = {
 
 		console.log(req.method);
 		
+		console.log(req.body);
+		
 		res.send("new");
 	}
 	

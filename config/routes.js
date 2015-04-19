@@ -14,7 +14,7 @@
 module.exports.routes = {
 
   '/': 'MainController',
-	
+  'post /new': 'MainController.new',
 	
 	/* AUTH */
 	'get /login': 'AuthController.login',
