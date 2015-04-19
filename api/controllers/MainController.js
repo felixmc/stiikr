@@ -13,14 +13,14 @@ function handleVote(req, res, voteValue) {
 				if (vote) {
 					var newValue = vote.value == voteValue ? 0 : voteValue;
 					Vote.update(vote.id, { value: newValue })
-					.exec(function(err, vote) {
+					.exec(function(err, newVote) {
 						if (err) {
 							sails.log.error(err);
 							res.serverError();
 						} else {
 							console.log('voted!');
-							console.log(vote);
-							req.socket.emit('voteUpdate', { post: post.id, score: post.calculateScore() + (vote.value == voteValue ? voteValue : -voteValue ) });
+							console.log(newVote);
+							req.socket.emit('voteUpdate', { post: post.id, score: post.calculateScore() + (newVote.value == 0 ? -voteValue : voteValue ) });
 							res.ok();
 						}
 					});
