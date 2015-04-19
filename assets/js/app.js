@@ -8,6 +8,8 @@ $(document).ready(function() {
 			console.log(data);
 			$('.score', $post).text(data);
 			$post.removeClass('downvoted').addClass('upvoted');
+		}).done(function(data) {
+			console.log('done! ' + data);
 		});
 	});
 	
