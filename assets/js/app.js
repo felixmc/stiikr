@@ -4,7 +4,7 @@ $(document).ready(function() {
 		var $this = $(this);
 		var $post = $this.closest('.post');
 		console.log('clicked!');
-		$.post( '/upvote/' + $post.attr('data-id'),
+		$.post('/upvote/' + $post.attr('data-id'),
 		function(data) {
 			console.log('success!');
 			console.log(data);
@@ -12,7 +12,9 @@ $(document).ready(function() {
 			$post.removeClass('downvoted').addClass('upvoted');
 		}).done(function(data) {
 			console.log('done! ' + data);
-		});
+		}).fail(function() {
+    	alert( "error" );
+  	});
 	});
 	
 	
