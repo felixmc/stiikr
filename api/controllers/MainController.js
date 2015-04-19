@@ -14,7 +14,7 @@ module.exports = {
 	},
 	
 	upvote: function(req, res) {
-		if (req.method === 'POST' && req.session.authenticated) {
+		if (req.method === 'POST' || req.session.authenticated) {
 
 		Post.find( req.param('id') )
 		.populate('votes')
@@ -24,6 +24,9 @@ module.exports = {
 			
 			if (post) {
 			
+//				post.votes.
+				console.log(post);
+				
 				res.send('success');
 			} else {
 				res.notFound();			
@@ -40,6 +43,10 @@ module.exports = {
 			res.notFound();
 		}
 	},
+	
+	downvote: function(req, res) {
+	
+	}, 
 	
 	new: function(req, res) {
 		if (req.method === 'POST' && req.session.authenticated) {
