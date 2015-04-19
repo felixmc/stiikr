@@ -19,12 +19,18 @@ module.exports = {
 		if (req.method === 'POST' && req.authenticated) {
 
 			Post.create({
-				title: req.param('title'),
+				title:   req.param('title'),
 				content: req.param('description'),
 				created: new Date(),
-				author: req.session.passport
+				author:  req.session.passport
 			}).exec(function(err, post) {
-			
+				if (err)
+					sails.logger.error(err);
+				
+				console.log('new user:');
+				console.log(user);
+				
+				res.redirect('/');
 			});
 			
 			res.send("new");			
