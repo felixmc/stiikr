@@ -2,11 +2,11 @@
 
 $(document).ready(function() {
 
-	$(document.body).on('click', '.upvote', function(e) {
+	$(document.body).on('click', '.upvote, .downvote', function(e) {
 		var $this = $(this);
 		var $post = $this.closest('.post');
 		
-		var url = '/upvote/' + $post.attr('data-id');
+		var url = '/'+$this.getClass()+'/' + $post.attr('data-id');
 		console.log(url);
 		
 		io.socket.request({
@@ -22,7 +22,7 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	io.socket.on('upvote', function(data) {
+	io.socket.on('voteUpdate', function(data) {
 		$('.post[data-id="'+data.post+'"] .score').text(data.score);
 		console.log(data);
 	});
