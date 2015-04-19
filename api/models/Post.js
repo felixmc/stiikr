@@ -16,8 +16,7 @@ var Post = {
 		},
 		
 		author: {
-			type: 'string',
-			required: true
+			model: 'User'
 		}
 		
 	}

@@ -17,3 +17,12 @@
 {{else}}
 <p>Welcome! <a href="/login">login</a></p>
 {{/if}}
+
+{{#if posts}}
+	{{#each posts}}
+		<div>
+			<h4>{{this.title}}</h4>
+			<p>description</p>
+		</div>
+	{{}}
+{{/if}}

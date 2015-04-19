@@ -8,7 +8,14 @@ module.exports = {
 
 		console.log(sails.views);
 		
-		res.render('home', { user: req.session.user });
+		Post.find({ limit: 10, sort: 'createdAt DESC' })
+		.exec(function(err, posts) {
+			if (err)
+				sails.logger.error(err);
+			
+			res.render('home', { user: req.session.user, posts: posts });
+		});
+
 	},
 	
 	new: function(req, res) {
