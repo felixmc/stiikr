@@ -15,7 +15,7 @@ $(document).ready(function() {
 				//$post.removeClass('downvoted').toggleClass('upvoted');
 		});
 		
-		ajax.done(function(data) {
+		ajax.complete(function(data) {
 			console.log('done');
 		});
 		
