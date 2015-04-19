@@ -15,33 +15,45 @@ module.exports = {
 	
 	upvote: function(req, res) {
 		if (req.method === 'POST' || req.session.authenticated) {
+			Post.find( req.param('id') )
+			.populate('votes')
+			.exec(function(err, post) {
+				if (err)
+					sails.logger.error(err);
 
-		Post.find( req.param('id') )
-		.populate('votes')
-		.exec(function(err, post) {
-			if (err)
-				sails.logger.error(err);
-			
-			if (post) {
-			
-				var hasVote = _.contains(post.votes, { user: req.session.user.id });
-				
-//				post.votes.
-				
-				console.log('userid: ' + req.session.user.id);
-				console.log(post);
-				
-				res.send('success');
-			} else {
-				res.notFound();			
-			}
-		});
-			
-			// if user has vote for post
-				// if vote value is same, set vote value to 0
-				// else if value is different, change vote value
-			// else create vote for post with value 1
-			
+				if (post) {
+					var vote = _.find(post.votes, { user: req.session.user.id });
+
+					if (vote) {
+						Vote.update(vote.id, { value: vote.value == 1 ? 0 : 1 })
+						.exec(function(err, vote) {
+							if (err) {
+								sails.logger.error(err);
+								res.serverError();
+							} else
+								res.send('vote successfully updated');
+						});						
+					});
+						
+					// if vote value is same, set vote value to 0
+					// else if value is different, change vote value				
+					} else {
+						Vote.create({
+							user:  req.session.user.id,
+							post:  post.id,
+							value: 1
+						}).exec(function(err, vote) {
+							if (err) {
+								sails.logger.error(err);
+								res.serverError();
+							} else
+								res.send('new vote successful');
+						});
+					}
+				} else {
+					res.notFound();			
+				}
+			});
 			
 		} else {
 			res.notFound();
