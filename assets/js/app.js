@@ -12,8 +12,9 @@ $(document).ready(function() {
 			$post.removeClass('downvoted').addClass('upvoted');
 		}).done(function(data) {
 			console.log('done! ' + data);
-		}).fail(function() {
+		}).fail(function(e) {
     	alert( "error" );
+			console.log(e);
   	});
 	});
 	
