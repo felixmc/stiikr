@@ -1,5 +1,5 @@
 function handleVote(req, res, voteValue) {
-	if (req.method === 'POST' || req.session.authenticated) {
+	if (req.method === 'POST' && req.session.authenticated) {
 		Post.find( req.param('id') )
 		.populate('votes')
 		.exec(function(err, post) {
@@ -8,7 +8,6 @@ function handleVote(req, res, voteValue) {
 
 			if (post) {
 				post = post[0];
-//				console.log(post);
 					
 				var vote = _.find(post.votes, { user: req.session.user.id });
 
@@ -80,13 +79,9 @@ module.exports = {
 			}).exec(function(err, post) {
 				if (err)
 					sails.log.error(err);
-				
-				console.log('new post:');
-				console.log(post);
-				
+								
 				res.redirect('/');
 			});
-
 		} else {
 			res.notFound();
 		}

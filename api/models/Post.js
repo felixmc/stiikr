@@ -26,10 +26,7 @@ var Post = {
 		},
 		
 		calculateScore: function() {
-			console.log('testing >> ');
-			console.log(this.votes);
 			this.score = _.reduceRight(this.votes, function(sum, next) {
-				console.log('testing >> ' + next);
 				return sum + next.value;
 			}, 0);
 		}
