@@ -21,8 +21,9 @@
 {{#if posts}}
 	{{#each posts}}
 		<div>
-			<h4>{{this.title}}</h4>
-			<p>{{this.description}}</p>
+			<h4><a href="/post/{{this.id}}">{{this.title}}</a></h4>
+			<p>{{this.content}}</p>
+			<p>by <a href="#">{{this.author.username}}</a></p>			
 		</div>
 	{{/each}}
 {{/if}}
