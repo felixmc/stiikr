@@ -5,11 +5,12 @@ module.exports = {
 	index: function(req, res) {
 	
 //		console.log(req.session.user);
-
+		console.log(Handlebars);
 		res.render('home', { user: req.session.user });
 	},
 	
 	new: function(req, res) {
+
 
 		
 		console.log(req.session);
