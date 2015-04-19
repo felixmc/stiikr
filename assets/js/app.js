@@ -19,9 +19,9 @@ $(document).ready(function() {
 		
 		console.log(ajax);
 		
-		ajax.complete(function(data) {
-			console.log('done');
-		});
+//		ajax.complete(function(data) {
+//			console.log('done');
+//		});
 		
 		e.preventDefault();
 		e.stopPropagation();
