@@ -2,6 +2,9 @@
 {{#if user}}
 <p>Welcome {{user.username}}</p>
 <p><a href="/logout">logout</a></p>
+
+<hr />
+
 <form action="/new" method="POST">
 	<h3>New Idea</h3>
 	<p>
@@ -18,6 +21,9 @@
 <p>Welcome! <a href="/login">login</a></p>
 {{/if}}
 
+<hr />
+
+<h2>Posts</h2>
 {{#if posts}}
 	{{#each posts}}
 		<div>
