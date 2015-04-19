@@ -16,7 +16,13 @@ var Post = {
 		},
 		
 		author: {
-			model: 'User'
+			model: 'User',
+			required: true
+		},
+		
+		votes: {
+			collection: 'Vote',
+			via: 'post'
 		}
 		
 	}

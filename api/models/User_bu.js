@@ -1,8 +1,0 @@
-// User Entity
-
-module.exports = {
-
-
-
-
-};

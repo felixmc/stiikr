@@ -3,11 +3,6 @@
 module.exports = {
 
 	index: function(req, res) {
-	
-//		console.log(req.session.user);
-
-//		console.log(sails.views);
-		
 		Post.find({ limit: 10, sort: 'createdAt DESC' })
 		.populate('author')
 		.exec(function(err, posts) {
@@ -16,13 +11,38 @@ module.exports = {
 			
 			res.render('home', { user: req.session.user, posts: posts });
 		});
+	},
+	
+	upvote: function(req, res) {
+		if (req.method === 'POST' && req.session.authenticated) {
 
+		Post.find( req.param('id') )
+		.populate('votes')
+		.exec(function(err, post) {
+			if (err)
+				sails.logger.error(err);
+			
+			if (post) {
+			
+				res.send('success');
+			} else {
+				res.notFound();			
+			}
+		});
+			
+			// if user has vote for post
+				// if vote value is same, set vote value to 0
+				// else if value is different, change vote value
+			// else create vote for post with value 1
+			
+			
+		} else {
+			res.notFound();
+		}
 	},
 	
 	new: function(req, res) {
-		
 		if (req.method === 'POST' && req.session.authenticated) {
-
 			Post.create({
 				title:   req.param('title'),
 				content: req.param('desc'),
@@ -40,9 +60,6 @@ module.exports = {
 		} else {
 			res.notFound();
 		}
-
-		
-
 	}
 	
 };
