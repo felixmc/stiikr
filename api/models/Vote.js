@@ -4,7 +4,8 @@ var Vote = {
 	
 	attributes: {
 		value: {
-			type: 'integer'
+			type: 'integer',
+			required: true
 		},
 		user: {
 			model: 'User',

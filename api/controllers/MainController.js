@@ -43,7 +43,7 @@ module.exports = {
 								sails.log.error(err);
 								res.serverError();
 							} else
-								res.send('new vote successful');
+								res.send('vote successfully created');
 						});
 					}
 				} else {
