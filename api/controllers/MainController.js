@@ -23,8 +23,8 @@ module.exports = {
 				if (err)
 					sails.logger.error(err);
 				
-				console.log('new user:');
-				console.log(user);
+				console.log('new post:');
+				console.log(post);
 				
 				res.redirect('/');
 			});
