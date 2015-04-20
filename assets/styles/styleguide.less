@@ -47,9 +47,13 @@ html, body {
 	width: @block-size * 2;
 	background-color: @secondary-background-color;	
 	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 .score-box:after {
+	content: attr(data-score);
 	color: @secondary-foreground-color;
 }
 
