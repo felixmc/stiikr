@@ -17,21 +17,26 @@ html, body {
 	font-weight: normal;
 }
 
-.vote {
+.score-widget {
+	height: @block-size * 2;
+	background: red;
+}
+
+.vote-button {
 	width: @block-size * .925;
 	height: @block-size * .925;
 	float: left;
 }
 
-.vote:first-of-type {
+.vote-button:first-of-type {
 	margin-bottom: @block-size * .15;
 }
 
-.vote {
+.vote-button {
 	box-shadow: inset 0 0 0 3px @primary-foreground-color;
 }
 
-.vote[data-action="upvote"] {
+.vote-button[data-action="upvote"] {
 	box-shadow: inset 0 0 0 3px @primary-accent-color;
 }
 
