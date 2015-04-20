@@ -26,6 +26,7 @@ html, body {
 	width: @block-size * .925;
 	height: @block-size * .925;
 	float: left;
+	display: block;
 }
 
 .vote-button:first-of-type {
@@ -39,5 +40,20 @@ html, body {
 .vote-button[data-action="upvote"] {
 	box-shadow: inset 0 0 0 3px @primary-accent-color;
 }
+
+.score-box {
+	height: @block-size * 2;
+	width: @block-size * 2;
+	background-color: @secondary-background-color;	
+}
+
+.score-box:after {
+	color: @secondary-foreground-color;
+}
+
+
+
+
+
 
 
