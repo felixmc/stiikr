@@ -20,7 +20,6 @@ html, body {
 .score-widget {
 	height: @block-size * 2;
 	width: @block-size * (2.25 + .925);
-	background: red;
 	position: relative;
 }
 
@@ -55,6 +54,7 @@ html, body {
 .score-box:after {
 	content: attr(data-score);
 	color: @secondary-foreground-color;
+	font-weight: 600;
 }
 
 
