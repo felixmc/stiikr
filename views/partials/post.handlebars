@@ -1,6 +1,6 @@
 <div class="post" data-id="{{this.id}}">
+	{{> score}}
 	<h4><a href="/post/{{this.id}}">{{this.title}}</a></h4>
-	<p><span class="score">{{this.score}}</span> | <a href="#" class="upvote">upvote</a> | <a href="#" class="downvote">downvote</a> | posted <time class="timeago" datetime="{{this.createdAtISO}}"></time></p>
+	<p class="metadata">posted <time class="timeago" datetime="{{this.createdAtISO}}"></time> by <a href="//twitter.com/{{this.author.username}}" target="_blank">@{{this.author.username}}</a></p>
 	<p>{{this.content}}</p>
-	<p>by <a href="//twitter.com/{{this.author.username}}" target="_blank">@{{this.author.username}}</a></p>
 </div>
