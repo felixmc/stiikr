@@ -44,7 +44,7 @@ html, body {
 .score-box {
 	height: @block-size * 2;
 	width: @block-size * 2;
-	background-color: @secondary-background-color;	
+	background-color: @primary-accent-color;	
 	display: block;
 	position: absolute;
 	top: 0;
@@ -54,16 +54,28 @@ html, body {
 
 .score-box:after {
 	content: attr(data-score);
-	color: @secondary-foreground-color;
+	color: @primary-background-color;
 	font-weight: 600;
 	font-size: 2em;
 	padding-top: 25%;
 	display: block;
 }
 
+.score-box[data-score^="-"] {
+	background-color: $primary-foreground-color;
+}
 
+.score-box[data-score^="-"]:after {
+	color: $primary-background-color;
+}
 
+.score-box[data-score="0"] {
+	background-color: $secondary-background-color;
+}
 
+.score-box[data-score="0"]:after {
+	color: $secondary-foreground-color;
+}
 
 
 
