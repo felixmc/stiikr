@@ -4,6 +4,23 @@ $(document).ready(function() {
 
 	$("time.timeago").timeago();	
 	
+	// login form nonsense
+	$(document.body).on('click', '.vote-button', function(e) {
+		var $this   = $(this);
+		var $header = $this.closest('.header');
+				
+		$header.addClass('expanded');
+		
+		e.preventDefault();
+		e.stopPropagation();
+		
+		return false;
+	});
+	
+	
+	
+	
+	
 	var voteChosenClass = 'chosen';
 	
 	// vote handling
@@ -20,16 +37,14 @@ $(document).ready(function() {
 		}, function (response) {
 //			console.log('resp: ' + response);
 		});
+
+		$this.toggleClass(voteChosenClass);
+		if (!$this.hasClass(voteChosenClass)) {
+			$('.vote-button', $post).removeClass(voteChosenClass);
+		}		
 		
 		e.preventDefault();
 		e.stopPropagation();
-
-		if ($this.hasClass(voteChosenClass)) {
-			$this.removeClass(voteChosenClass);
-		} else {
-			$('.vote-button', $post).removeClass(voteChosenClass);
-			$this.addClass(voteChosenClass);
-		}
 		
 		return false;
 	});
