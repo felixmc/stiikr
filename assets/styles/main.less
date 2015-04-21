@@ -57,7 +57,6 @@
 	background: @primary-background-color;
 	width: @block-size * 8.5;
 	margin-right: @block-size;
-	float: left;
 	opacity: 0;
 	transform: scale(0);
 	transition: transform .5s, opacity .5s;
@@ -88,6 +87,7 @@
 .header.expanded .input {
 	opacity: 1;
 	transform: scale(1);
+	float: left;
 }
 
 .header .input.wide {
