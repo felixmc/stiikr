@@ -9,7 +9,7 @@ $(document).ready(function() {
 		var $this = $(this);
 		var $post = $this.closest('.post');
 		
-		var url = '/'+$this.prop('data-action')+'/' + $post.attr('data-id');
+		var url = '/'+$this.attr('data-action')+'/' + $post.attr('data-id');
 		console.log(url);
 		
 		io.socket.request({
