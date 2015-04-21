@@ -10,16 +10,25 @@
 	height: @block-size * 5;
 }
 
+.header .wrapper {
+	position: relative;
+}
+
 .header h1 {
 	font-size: 2em;
 	font-style: italic;
 	margin: 0;
 }
 
-.header .button {
-	float: right;
+.header .button.throw {
 	font-size: .75em;
 	padding: 7px 45px;
+	position: absolute;
+	right: 0;
+}
+
+.header.expanded .button.throw {
+
 }
 
 .content {
