@@ -2,7 +2,15 @@
 	<div class="wrapper">
 		<h1>
 			Throw an idea at the wall and see if it sticks… 
-			<a href="#" class="button throw">throw</a>
 		</h1>
+		<form action="/new" method="POST">
+			<div class="input">
+				<input type="text" name="title" placeholder="title" />
+			</div>
+			<div class="input wide">
+				<textarea name="desc" placeholder="description"></textarea>
+			</div>
+			<a href="#" class="button throw" role="button">throw</a>
+		</form>
 	</div>
 </header>
