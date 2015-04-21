@@ -10,7 +10,7 @@ $(document).ready(function() {
 		var $post = $this.closest('.post');
 		
 		var url = '/'+$this.prop('data-action')+'/' + $post.attr('data-id');
-//		console.log(url);
+		console.log(url);
 		
 		io.socket.request({
 			url: url,
@@ -27,7 +27,7 @@ $(document).ready(function() {
 	
 	io.socket.on('voteUpdate', function(data) {
 		$('.post[data-id="' + data.post + '"] .score-box').attr('data-score', data.score);
-//		console.log(data);
+		console.log(data);
 	});
 	
 	
