@@ -39,7 +39,7 @@ $(document).ready(function() {
 		});
 
 		$this.toggleClass(voteChosenClass);
-		if (!$this.hasClass(voteChosenClass)) {
+		if ($this.hasClass(voteChosenClass)) {
 			$('.vote-button', $post).removeClass(voteChosenClass);
 		}		
 		
