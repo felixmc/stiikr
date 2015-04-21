@@ -88,10 +88,12 @@ module.exports = {
 	},
 	
 	upvote: function(req, res) {
+		console.log('upvote ' + req.param('id'));
 		handleVote(req, res, 1);
 	},
 	
 	downvote: function(req, res) {
+		console.log('downvote ' + req.param('id'));
 		handleVote(req, res, -1);	
 	}, 
 	
