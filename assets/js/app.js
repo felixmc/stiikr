@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$("time.timeago").timeago();	
 	
 	// login form nonsense
-	$(document.body).on('click', '.vote-button', function(e) {
+	$(document.body).on('click', '.throw', function(e) {
 		var $this   = $(this);
 		var $header = $this.closest('.header');
 				
