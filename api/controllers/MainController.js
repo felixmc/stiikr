@@ -11,6 +11,7 @@ function handleVote(req, res, voteValue) {
 				var vote = _.find(post.votes, { user: req.session.user.id });
 
 				if (vote) {
+					sails.log.debug(vote);
 					var newValue = vote.value == voteValue ? 0 : voteValue;
 					Vote.update(vote.id, { value: newValue })
 					.exec(function(err, newVote) {
