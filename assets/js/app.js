@@ -8,8 +8,12 @@ $(document).ready(function() {
 	$(document.body).on('click', '.throw', function(e) {
 		var $this   = $(this);
 		var $header = $this.closest('.header');
-				
-		$header.addClass('expanded');
+		
+		if ($header.hasClass('expanded')) {
+			$this.closest('form').submit();
+		} else {
+			$header.addClass('expanded');
+		}
 		
 		e.preventDefault();
 		e.stopPropagation();
