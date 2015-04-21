@@ -11,7 +11,7 @@ function handleVote(req, res, voteValue) {
 				var vote = _.find(post.votes, { user: req.session.user.id });
 
 				if (vote) {
-					sails.log.debug(vote);
+//					sails.log.debug(vote);
 					var newValue = vote.value == voteValue ? 0 : voteValue;
 					Vote.update(vote.id, { value: newValue })
 					.exec(function(err, newVote) {
@@ -62,6 +62,7 @@ module.exports = {
 			_.each(posts, function(post) {
 				post.calculateScore();
 				post.createdAtISO = post.createdAt.toISOString();
+				console.log(post.votes);
 			});
 			
 			res.render('home', { user: req.session.user, posts: posts });
