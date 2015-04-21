@@ -38,10 +38,10 @@ $(document).ready(function() {
 //			console.log('resp: ' + response);
 		});
 
-		$this.toggleClass(voteChosenClass);
-		if ($this.hasClass(voteChosenClass)) {
+		if (!$this.hasClass(voteChosenClass)) {
 			$('.vote-button', $post).removeClass(voteChosenClass);
-		}		
+		}
+		$this.toggleClass(voteChosenClass);
 		
 		e.preventDefault();
 		e.stopPropagation();
