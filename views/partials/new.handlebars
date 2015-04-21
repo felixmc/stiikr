@@ -10,7 +10,11 @@
 			<div class="input wide">
 				<textarea name="desc" placeholder="description"></textarea>
 			</div>
-			<a href="#" class="button throw" role="button">throw</a>
+			{{#if user}}
+				<a href="#" class="button throw" role="button">throw</a>
+			{{else}}
+				<a href="/auth/twitter" class="button">login</a>
+			{{/if}}
 		</form>
 	</div>
 </header>
