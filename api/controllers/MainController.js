@@ -63,6 +63,14 @@ module.exports = {
 				post.calculateScore();
 				post.createdAtISO = post.createdAt.toISOString();
 				console.log(post.votes);
+				console.log(req.session.user);
+				
+				if (req.session.authenticated) {
+					var userVote = _.find(votes, { user: req.session.user.id });
+					if (userVote) {
+						post.userVote
+					}
+				}
 			});
 			
 			res.render('home', { user: req.session.user, posts: posts });
