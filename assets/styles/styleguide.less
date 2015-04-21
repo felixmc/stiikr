@@ -86,13 +86,17 @@ a:hover {
 	color: @secondary-foreground-color;
 }
 
-.post-preview .score-widget {
-	float: left;
-	margin-right: @block-size;
-}
-
 .post {
 	position: relative;
+}
+
+.post.post-preview {
+	margin-bottom: @block-size * 1.1;
+}
+
+.post.post-preview .score-widget {
+	float: left;
+	margin-right: @block-size;
 }
 
 .post h3 {
