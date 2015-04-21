@@ -66,7 +66,7 @@ module.exports = {
 				console.log(req.session.user);
 				
 				if (req.session.authenticated) {
-					var userVote = _.find(votes, { user: req.session.user.id });
+					var userVote = _.find(post.votes, { user: req.session.user.id });
 					if (userVote) {
 						post.userVote
 					}
