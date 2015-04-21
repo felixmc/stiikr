@@ -20,7 +20,6 @@ $(document).ready(function() {
 	
 	
 	
-	
 	var voteChosenClass = 'chosen';
 	
 	// vote handling
