@@ -62,13 +62,11 @@ module.exports = {
 			_.each(posts, function(post) {
 				post.calculateScore();
 				post.createdAtISO = post.createdAt.toISOString();
-//				console.log(post.votes);
-				console.log(req.session.user);
 				
 				if (req.session.authenticated) {
 					var userVote = _.find(post.votes, { user: req.session.user.id });
-					if (userVote) {
-						post.userVote
+					if (userVote && userVote.value != 0) {
+						post[userVote.value > 0 ? 'upvote' : 'downvote'] = true;
 					}
 				}
 			});
