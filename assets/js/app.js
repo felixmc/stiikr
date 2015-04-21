@@ -16,7 +16,7 @@ $(document).ready(function() {
 			url: url,
 			method: 'POST'
 		}, function (response) {
-//			console.log('resp: ' + response);
+			console.log('resp: ' + response);
 		});
 		
 		e.preventDefault();
