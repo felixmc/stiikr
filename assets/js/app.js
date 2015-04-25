@@ -25,7 +25,7 @@ $(document).ready(function() {
 	var voteChosenClass = 'chosen';
 
 	// vote handling
-	$(document.body).on('click', '.authenticated .post:not(.stale, .locked) .vote-button', function(e) {
+	$('body.authenticated').on('click', '.post:not(.stale, .locked) .vote-button', function(e) {
 		var $this = $(this);
 		var $post = $this.closest('.post');
 
