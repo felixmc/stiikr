@@ -9,7 +9,7 @@ function handleVote(req, res, voteValue) {
 				sails.log.error(err);
 
 			function cannotVote(message) {
-				res.status(403).send('can no longer vote');
+				res.status(403).send('can not vote: ' + message);
 			}
 
 			if (post) {
@@ -68,12 +68,12 @@ function handleVote(req, res, voteValue) {
 module.exports = {
 
 	index: function(req, res) {
-		Post.getWinner(new Date(new Date().getTime() - (86400 * 1000 * 4) ), function(err, winners) {
-			if (err)
-				app.logger.error(err.stack);
-
-			console.log(winners);
-		});
+//		Post.getWinner(new Date(new Date().getTime() - (86400 * 1000 * 4) ), function(err, winners) {
+//			if (err)
+//				app.logger.error(err.stack);
+//
+//			console.log(winners);
+//		});
 
 		Post.find({ limit: 10, sort: 'createdAt DESC' })
 		.populate('author')
