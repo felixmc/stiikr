@@ -45,6 +45,9 @@ var Post = {
 	},
 
 	getWinner: function (date, callback) {
+		console.log(new Date(date.getYear(), date.getMonth(), date.getDay()));
+		console.log(new Date(date.getYear(), date.getMonth(), date.getDay() + 1));
+
 		this.find({
 			createdAt: {
 				'>=': new Date(date.getYear(), date.getMonth(), date.getDay()),
@@ -65,6 +68,9 @@ var Post = {
 				})
 				.populate('votes')
 				.exec(function(err, posts) {
+					console.log('day posts: ');
+					console.log(posts);
+
 					if (err) return callback(err, undefined);
 					else {
 						var maxScore = _.reduce(posts, function (cur, post) {
