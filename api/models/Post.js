@@ -50,8 +50,8 @@ var Post = {
 		console.log(new Date(date.getYear(), date.getMonth(), date.getDay() + 1));
 
 		var createdAt = {
-			'>=': new Date(date.getYear(), date.getMonth(), date.getDay()),
-			'<': new Date(date.getYear(), date.getMonth(), date.getDay() + 1)
+			'>=': new Date(new Date(date).setHours(0,0,0,0)),
+			'<':  new Date(new Date(date).setHours(24,0,0,0))
 		};
 
 		Self.find({
