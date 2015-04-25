@@ -119,6 +119,15 @@ module.exports = {
 				post = post[0];
 				post.calculateScore();
 				post.createdAtISO = post.createdAt.toISOString();
+				post.stale = post.isStale();
+
+				if (req.session.authenticated) {
+					var userVote = _.find(post.votes, { user: req.session.user.id });
+					if (userVote && userVote.value != 0) {
+						post.locked = userVote.isLocked;
+						post[userVote.value > 0 ? 'upvote' : 'downvote'] = true;
+					}
+				}
 
 				res.render('post', post);
 			} else {
