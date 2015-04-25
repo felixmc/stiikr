@@ -38,6 +38,7 @@ $(document).ready(function() {
 			url: url,
 			method: 'POST'
 		}, function (response) {
+			console.log(response);
 //			console.log('resp: ' + response);
 		});
 
