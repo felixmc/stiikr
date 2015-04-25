@@ -22,12 +22,10 @@ $(document).ready(function() {
 	});
 
 
-
-
 	var voteChosenClass = 'chosen';
 
 	// vote handling
-	$(document.body).on('click', '.post:not(.stale, .locked) .vote-button', function(e) {
+	$(document.body).on('click', '.authenticated .post:not(.stale, .locked) .vote-button', function(e) {
 		var $this = $(this);
 		var $post = $this.closest('.post');
 
@@ -38,14 +36,13 @@ $(document).ready(function() {
 			url: url,
 			method: 'POST'
 		}, function (err, response) {
-			console.log(response);
-//			console.log('resp: ' + response);
+				if (response.statusCode == 200) {
+					if (!$this.hasClass(voteChosenClass)) {
+						$('.vote-button', $post).removeClass(voteChosenClass);
+					}
+					$this.toggleClass(voteChosenClass);
+				}
 		});
-
-		if (!$this.hasClass(voteChosenClass)) {
-			$('.vote-button', $post).removeClass(voteChosenClass);
-		}
-		$this.toggleClass(voteChosenClass);
 
 		e.preventDefault();
 		e.stopPropagation();
@@ -55,9 +52,7 @@ $(document).ready(function() {
 
 	io.socket.on('voteUpdate', function(data) {
 		var $post = $('.post[data-id="' + data.post + '"]');
-
 		$('.score-box', $post).attr('data-score', data.score);
-//		console.log(data);
 	});
 
 
