@@ -45,7 +45,7 @@ var Post = {
 	},
 
 	staticTest: function () {
-		Post.find( req.param('id') )
+		Post.find({})
 		.populate('votes')
 		.exec(function(err, post) {
 			if (err) console.log('ERRR');
