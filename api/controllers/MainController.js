@@ -85,14 +85,12 @@ module.exports = {
 			_.each(posts, function(post) {
 				post.calculateScore();
 				post.createdAtISO = post.createdAt.toISOString();
-//				post.
+				post.stale = post.isStale();
 
 				if (req.session.authenticated) {
 					var userVote = _.find(post.votes, { user: req.session.user.id });
 					if (userVote && userVote.value != 0) {
-						// check is vote should be locked
-							// by time lock
-							// by day lock
+						userVote.locked = userVote.isLocked;
 						post[userVote.value > 0 ? 'upvote' : 'downvote'] = true;
 					}
 				}
