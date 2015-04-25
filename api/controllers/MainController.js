@@ -90,7 +90,7 @@ module.exports = {
 				if (req.session.authenticated) {
 					var userVote = _.find(post.votes, { user: req.session.user.id });
 					if (userVote && userVote.value != 0) {
-						userVote.locked = userVote.isLocked;
+						post.locked = userVote.isLocked;
 						post[userVote.value > 0 ? 'upvote' : 'downvote'] = true;
 					}
 				}
