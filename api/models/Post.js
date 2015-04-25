@@ -52,12 +52,15 @@ var Post = {
 			createdAt: {
 				'>=': new Date(date.getYear(), date.getMonth(), date.getDay()),
 				'<': new Date(date.getYear(), date.getMonth(), date.getDay() + 1)
-			}, winner: true
+			}, isWinner: true
 		})
 		.populate('votes')
 		.exec(function(err, post) {
 			if (err) return callback(err, undefined);
 			else if (post) {
+				console.log('day winner posts: ');
+				console.log(posts);
+
 				callback(undefined, post);
 			} else {
 				this.find({
