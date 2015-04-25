@@ -68,7 +68,7 @@ function handleVote(req, res, voteValue) {
 module.exports = {
 
 	index: function(req, res) {
-		Post.getWinner(new Date(new Date().getTime() - (86400 * 1000 * 4) ), function(err, winners) {
+		Post.getWinner(new Date(new Date().getTime() - (86400 * 1000 * 3) ), function(err, winners) {
 			if (err)
 				app.logger.error(err.stack);
 
