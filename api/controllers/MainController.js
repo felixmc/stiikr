@@ -16,7 +16,7 @@ function handleVote(req, res, voteValue) {
 				post = post[0];
 
 				// if post is not from today..
-				if (post.createAt.toDateString() !== new Date().toDateString())
+				if (new Date(post.createAt).toDateString() !== new Date().toDateString())
 					return cannotVote('post is stale');
 				// TODO: check if post is from today
 
