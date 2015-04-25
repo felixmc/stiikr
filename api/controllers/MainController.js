@@ -9,6 +9,7 @@ function handleVote(req, res, voteValue) {
 				sails.log.error(err);
 
 			function cannotVote(message) {
+				console.log('can not vote: ' + message);
 				res.status(403).send('can not vote: ' + message);
 			}
 
