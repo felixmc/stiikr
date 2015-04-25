@@ -85,7 +85,8 @@ var Post = {
 
 						callback(undefined, winners);
 					}
-				}
+				});
+			}
 		});
 	}
 
