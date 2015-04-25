@@ -23,15 +23,16 @@ module.exports.passport = {
 //    strategy: require('passport-http-bearer').Strategy
 //  },
 
-  twitter: {
-    name: 'twitter',
-    protocol: 'oauth',
-    strategy: require('passport-twitter').Strategy,
-    options: {
-      consumerKey: 'utROEvFrWDGZ1MR6L1sGsEBFT',
-      consumerSecret: '53W18dU88V88XYhGE37Z5OO2PId1atGetpOS3q7j6iEOFsNlj2'
-    }
-  },
+	twitter: {
+		name: 'twitter',
+		protocol: 'oauth',
+		strategy: require('passport-twitter').Strategy,
+		options: {
+			consumerKey: 'utROEvFrWDGZ1MR6L1sGsEBFT',
+			consumerSecret: '53W18dU88V88XYhGE37Z5OO2PId1atGetpOS3q7j6iEOFsNlj2'
+		},
+		'profile_key': '_json'
+	},
 
 //  github: {
 //    name: 'GitHub',
