@@ -46,11 +46,10 @@ var Post = {
 
 	staticTest: function () {
 		this.find({})
-		.populate('votes')
 		.exec(function(err, post) {
 			if (err) console.log('ERRR');
 
-			//console.log(posts);
+			console.log(post);
 
 		});
 	}
