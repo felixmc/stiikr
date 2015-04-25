@@ -43,16 +43,16 @@ var Post = {
 		},
 
 		isStale: function() {
-			console.log(this.createAt);
-			console.log(new Date(this.createAt).toDateString());
+			console.log(this.createdAt);
+			console.log(new Date(this.createdAt).toDateString());
 			console.log(new Date().toDateString());
-			return new Date(this.createAt).toDateString() !== new Date().toDateString();
+			return new Date(this.createdAt).toDateString() !== new Date().toDateString();
 			console.log();
 		}
 
 	},
 
-	getWinner: function (date, callback) {
+	findWinner: function (date, callback) {
 		var Self = this;
 
 		var createdAt = {
