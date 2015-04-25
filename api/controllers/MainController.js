@@ -35,14 +35,14 @@ function handleVote(req, res, voteValue) {
 							res.serverError();
 						} else {
 							req.socket.emit('voteUpdate', { post: post.id, score: post.calculateScore() + voteValue });
-							res.ok();							
+							res.ok();
 						}
 					});
 				}
 			} else {
-				res.notFound();			
+				res.notFound();
 			}
-		});			
+		});
 	} else {
 		res.notFound();
 	}
@@ -58,11 +58,12 @@ module.exports = {
 		.exec(function(err, posts) {
 			if (err)
 				sails.log.error(err);
-			
+
 			_.each(posts, function(post) {
 				post.calculateScore();
 				post.createdAtISO = post.createdAt.toISOString();
-				
+				post.
+
 				if (req.session.authenticated) {
 					var userVote = _.find(post.votes, { user: req.session.user.id });
 					if (userVote && userVote.value != 0) {
@@ -70,11 +71,11 @@ module.exports = {
 					}
 				}
 			});
-			
+
 			res.render('home', { user: req.session.user, posts: posts });
 		});
 	},
-	
+
 	post: function(req, res) {
 		Post.find(req.param('id'))
 		.populate('author')
@@ -87,24 +88,24 @@ module.exports = {
 				post = post[0];
 				post.calculateScore();
 				post.createdAtISO = post.createdAt.toISOString();
-	
+
 				res.render('post', post);
 			} else {
 				res.notFound();
 			}
 		});
 	},
-	
+
 	upvote: function(req, res) {
 //		console.log('upvote ' + req.param('id'));
 		handleVote(req, res, 1);
 	},
-	
+
 	downvote: function(req, res) {
 //		console.log('downvote ' + req.param('id'));
-		handleVote(req, res, -1);	
-	}, 
-	
+		handleVote(req, res, -1);
+	},
+
 	new: function(req, res) {
 		if (req.method === 'POST' && req.session.authenticated) {
 			Post.create({
@@ -114,12 +115,12 @@ module.exports = {
 			}).exec(function(err, post) {
 				if (err)
 					sails.log.error(err);
-								
+
 				res.redirect('/');
 			});
 		} else {
 			res.notFound();
 		}
 	}
-	
+
 };
