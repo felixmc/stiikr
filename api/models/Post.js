@@ -48,27 +48,24 @@ var Post = {
 		console.log(new Date(date.getYear(), date.getMonth(), date.getDay()));
 		console.log(new Date(date.getYear(), date.getMonth(), date.getDay() + 1));
 
+		var createdAt = {
+			'>=': new Date(date.getYear(), date.getMonth(), date.getDay()),
+			'<': new Date(date.getYear(), date.getMonth(), date.getDay() + 1)
+		};
+
 		this.find({
-			createdAt: {
-				'>=': new Date(date.getYear(), date.getMonth(), date.getDay()),
-				'<': new Date(date.getYear(), date.getMonth(), date.getDay() + 1)
-			}, isWinner: true
+			createdAt: createdAt, isWinner: true
 		})
 		.populate('votes')
 		.exec(function(err, posts) {
 			if (err) return callback(err, undefined);
-			else if (posts) {
+			else if (posts.length > 0) {
 				console.log('day winner posts: ');
 				console.log(posts);
 
 				callback(undefined, posts);
 			} else {
-				this.find({
-					createdAt: {
-						'>=': new Date(date.getYear(), date.getMonth(), date.getDay()),
-						'<': new Date(date.getYear(), date.getMonth(), date.getDay() + 1)
-					}
-				})
+				this.find({ createdAt: createdAt })
 				.populate('votes')
 				.exec(function(err, posts) {
 					console.log('day posts: ');
