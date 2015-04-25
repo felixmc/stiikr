@@ -45,6 +45,7 @@ var Post = {
 	},
 
 	getWinner: function (date, callback) {
+		var Self = this;
 		console.log(new Date(date.getYear(), date.getMonth(), date.getDay()));
 		console.log(new Date(date.getYear(), date.getMonth(), date.getDay() + 1));
 
@@ -53,7 +54,7 @@ var Post = {
 			'<': new Date(date.getYear(), date.getMonth(), date.getDay() + 1)
 		};
 
-		this.find({
+		Self.find({
 			createdAt: createdAt, isWinner: true
 		})
 		.populate('votes')
@@ -65,7 +66,7 @@ var Post = {
 
 				callback(undefined, posts);
 			} else {
-				this.find({ createdAt: createdAt })
+				Self.find({ createdAt: createdAt })
 				.populate('votes')
 				.exec(function(err, posts) {
 					console.log('day posts: ');
@@ -84,7 +85,7 @@ var Post = {
 
 						_.forEach(winners, function(winner) {
 							winner.isWinner = true;
-							this.update(winner.id, { isWinner: true }, function(err, post) {
+							Self.update(winner.id, { isWinner: true }, function(err, post) {
 								console.log(winner.id + ' marked as winner.');
 							});
 						});
