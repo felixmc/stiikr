@@ -92,6 +92,7 @@ module.exports = {
 				post.calculateScore();
 				post.createdAtISO = post.createdAt.toISOString();
 				post.stale = post.isStale();
+				post.preview = true;
 
 				if (req.session.authenticated) {
 					var userVote = _.find(post.votes, { user: req.session.user.id });

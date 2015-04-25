@@ -1,4 +1,4 @@
-<div class="post post-preview {{#if this.stale}}stale{{/if}} {{#if this.locked}}locked{{/if}}" data-id="{{this.id}}">
+<div class="post {{#if this.preview}}post-preview{{/if}} {{#if this.stale}}stale{{/if}} {{#if this.locked}}locked{{/if}}" data-id="{{this.id}}">
 	{{> score}}
 	<div class="post-wrapper">
 		<h3><a href="/post/{{this.id}}">{{this.title}}</a></h3>
@@ -6,5 +6,28 @@
 	<!--		by <a href="//twitter.com/{{this.author.username}}" target="_blank">@{{this.author.username}}</a>-->
 		</p>
 		<p class="post-content">{{this.content}}</p>
+
+
+	{{#unless this.preview}}
+		<p>
+			<a class="twitter-share-button" href="https://twitter.com/share"
+				data-via="stiikr"
+				data-size="medium"
+				data-count="horizontal",
+				data-text="{{title}}">Tweet</a>
+			<script>
+				window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+			</script>
+			<div class="fb-share-button" data-layout="button_count"></div>
+		</p>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=1419645621583093";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+	{{/unless}}
 	</div>
 </div>

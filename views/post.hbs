@@ -1,52 +1,18 @@
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=1419645621583093";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<div class="content wrapper">
+	{{> post}}
 
+	<div id="disqus_thread"></div>
+</div>
 
-
-
-<h1><a href="/">Stiikr</a></h1>
-{{#if user}}
-<p>Welcome {{user.username}}</p>
-<p><a href="/logout">logout</a></p>
-{{else}}
-<p>Welcome! <a href="/auth/twitter">login</a></p>
-{{/if}}
-<hr />
-	<div class="post" data-id="{{id}}">
-		<h2><a href="/post/{{id}}">{{title}}</a></h2>
-		<p><span class="score">{{score}}</span> | <a href="#" class="upvote">upvote</a> | <a href="#" class="downvote">downvote</a> | posted <time class="timeago" datetime="{{this.createdAtISO}}"></time></p>
-		<p>{{content}}</p>
-		<p>by <a href="//twitter.com/{{author.username}}" target="_blank">@{{author.username}}</a></p>
-		<p>
-			<a class="twitter-share-button" href="https://twitter.com/share"
-				data-via="stiikr"
-				data-size="medium"
-				data-count="horizontal",
-				data-text="{{title}}">Tweet</a>
-			<script>
-			window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
-			</script>
-		<div class="fb-share-button" data-layout="button_count"></div>
-		</p>
-		
-		</div>
-		<hr />
-<div id="disqus_thread"></div>
 <script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES * * */
-    var disqus_shortname = 'stiikr';
+		/* * * CONFIGURATION VARIABLES * * */
+		var disqus_shortname = 'stiikr';
 		var disqus_identifier = '{{id}}';
-    
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+
+		/* * * DON'T EDIT BELOW THIS LINE * * */
+		(function() {
+				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+				(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
 </script>
