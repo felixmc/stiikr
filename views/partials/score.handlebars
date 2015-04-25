@@ -1,10 +1,4 @@
 <div class="score-widget">
-	 stale: {{this.stale}}
-	locked: {{this.locked}}
-
-	{{#if this.stale}}
-		stale
-	{{/if}}
 	<a href="#" class="vote-button{{#if this.upvote}} chosen{{/if}}" data-action="upvote" role="button"></a>
 	<a href="#" class="vote-button{{#if this.downvote}} chosen{{/if}}" data-action="downvote" role="button"></a>
 	<span class="score-box" data-score="{{this.score}}"></span>

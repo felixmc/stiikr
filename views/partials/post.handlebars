@@ -1,4 +1,4 @@
-<div class="post post-preview" data-id="{{this.id}}">
+<div class="post post-preview {{#if this.stale}}stale{{/if}} {{#if this.locked}}locked{{/if}}" data-id="{{this.id}}">
 	{{> score}}
 	<div class="post-wrapper">
 		<h3><a href="/post/{{this.id}}">{{this.title}}</a></h3>
