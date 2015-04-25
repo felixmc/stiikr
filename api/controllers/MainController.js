@@ -1,3 +1,5 @@
+
+
 function handleVote(req, res, voteValue) {
 	if (req.method === 'POST' && req.session.authenticated) {
 		Post.find( req.param('id') )
@@ -6,9 +8,23 @@ function handleVote(req, res, voteValue) {
 			if (err)
 				sails.log.error(err);
 
+			function cannotVote(message) {
+				res.status(403).send('can no longer vote');
+			}
+
 			if (post) {
 				post = post[0];
+
+				// if post is not from today..
+				if (post.createAt.toDateString() !== new Date().toDateString())
+					return cannotVote('post is stale');
+				// TODO: check if post is from today
+
+
 				var vote = _.find(post.votes, { user: req.session.user.id });
+
+				// TODO: check if vote is older than 10 minutes
+
 
 				if (vote) {
 //					sails.log.debug(vote);
@@ -52,6 +68,8 @@ function handleVote(req, res, voteValue) {
 module.exports = {
 
 	index: function(req, res) {
+		Post.staticTest();
+
 		Post.find({ limit: 10, sort: 'createdAt DESC' })
 		.populate('author')
 		.populate('votes')
@@ -67,6 +85,9 @@ module.exports = {
 				if (req.session.authenticated) {
 					var userVote = _.find(post.votes, { user: req.session.user.id });
 					if (userVote && userVote.value != 0) {
+						// check is vote should be locked
+							// by time lock
+							// by day lock
 						post[userVote.value > 0 ? 'upvote' : 'downvote'] = true;
 					}
 				}
