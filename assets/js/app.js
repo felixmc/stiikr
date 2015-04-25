@@ -37,7 +37,7 @@ $(document).ready(function() {
 		io.socket.request({
 			url: url,
 			method: 'POST'
-		}, function (response) {
+		}, function (err, response) {
 			console.log(response);
 //			console.log('resp: ' + response);
 		});
