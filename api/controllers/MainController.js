@@ -75,8 +75,14 @@ module.exports = {
 //			console.log(winners);
 //		});
 
-		Post.find({ limit: 10, sort: 'createdAt DESC' })
-		.populate('author')
+		Post.find({
+			createdAt: {
+				'>=': new Date(new Date().setHours(0,0,0,0)),
+				'<':  new Date(new Date().setHours(24,0,0,0))
+			},
+			limit: 10,
+			sort: 'createdAt DESC'
+		}).populate('author')
 		.populate('votes')
 		.exec(function(err, posts) {
 			if (err)
