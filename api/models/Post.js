@@ -35,8 +35,8 @@ var Post = {
 			required: false
 		},
 
-		calculateScore: function() {
-			this.score = _.reduceRight(this.votes, function(sum, next) {
+		calculateScore: function () {
+			this.score = _.reduceRight(this.votes, function (sum, next) {
 				return sum + next.value;
 			}, 0);
 			return this.score;
@@ -44,7 +44,7 @@ var Post = {
 
 	},
 
-	staticTest: function() {
+	staticTest: function () {
 		Post.find( req.param('id') )
 		.populate('votes')
 		.exec(function(err, post) {
@@ -52,7 +52,7 @@ var Post = {
 
 			console.log(posts);
 
-		}
+		});
 	}
 
 };
