@@ -19,7 +19,7 @@ var Vote = {
 
 		isLocked: function() {
 			return this.value != 0 && (
-				(new Date().getTime() - new Date(this.updatedAt).getTIme()) >= (60 * 10 * 1000)
+				(new Date().getTime() - new Date(this.updatedAt).getTime()) >= (60 * 10 * 1000)
 			);
 		}
 
