@@ -54,6 +54,10 @@ a:hover {
 	color: @primary-background-color;
 }
 
+.post.locked .vote-button:not(.chosen) {
+	opacity: .6;
+}
+
 .vote-button[data-action="upvote"].chosen {
 	background-color: @primary-accent-color;
 }
