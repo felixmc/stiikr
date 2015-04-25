@@ -40,14 +40,16 @@ var Post = {
 				return sum + next.value;
 			}, 0);
 			return this.score;
+		},
+
+		isStale: function() {
+			return new Date(this.createAt).toDateString() !== new Date().toDateString();
 		}
 
 	},
 
 	getWinner: function (date, callback) {
 		var Self = this;
-		console.log(new Date(date.getYear(), date.getMonth(), date.getDay()));
-		console.log(new Date(date.getYear(), date.getMonth(), date.getDay() + 1));
 
 		var createdAt = {
 			'>=': new Date(new Date(date).setHours(0,0,0,0)),
@@ -61,16 +63,16 @@ var Post = {
 		.exec(function(err, posts) {
 			if (err) return callback(err, undefined);
 			else if (posts.length > 0) {
-				console.log('day winner posts: ');
-				console.log(posts);
+//				console.log('day winner posts: ');
+//				console.log(posts);
 
 				callback(undefined, posts);
 			} else {
 				Self.find({ createdAt: createdAt })
 				.populate('votes')
 				.exec(function(err, posts) {
-					console.log('day posts: ');
-					console.log(posts);
+//					console.log('day posts: ');
+//					console.log(posts);
 
 					if (err) return callback(err, undefined);
 					else {
@@ -86,7 +88,7 @@ var Post = {
 						_.forEach(winners, function(winner) {
 							winner.isWinner = true;
 							Self.update(winner.id, { isWinner: true }, function(err, post) {
-								console.log(winner.id + ' marked as winner.');
+//								console.log(winner.id + ' marked as winner.');
 							});
 						});
 

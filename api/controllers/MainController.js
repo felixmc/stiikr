@@ -9,7 +9,7 @@ function handleVote(req, res, voteValue) {
 				sails.log.error(err);
 
 			function cannotVote(message) {
-				console.log('can not vote: ' + message);
+				sails.log.debug('cannot vote: ' + message);
 				res.status(403).send('can not vote: ' + message);
 			}
 
@@ -17,18 +17,17 @@ function handleVote(req, res, voteValue) {
 				post = post[0];
 
 				// if post is not from today..
-				if (new Date(post.createAt).toDateString() !== new Date().toDateString())
+				if (post.isStale())
 					return cannotVote('post is stale');
-				// TODO: check if post is from today
-
 
 				var vote = _.find(post.votes, { user: req.session.user.id });
 
-				// TODO: check if vote is older than 10 minutes
-
-
 				if (vote) {
 //					sails.log.debug(vote);
+									// TODO: check if vote is older than 10 minutes
+					if (vote.isLocked())
+						return cannotVote('vote is locked');
+
 					var newValue = vote.value == voteValue ? 0 : voteValue;
 					Vote.update(vote.id, { value: newValue })
 					.exec(function(err, newVote) {
