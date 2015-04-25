@@ -68,7 +68,12 @@ function handleVote(req, res, voteValue) {
 module.exports = {
 
 	index: function(req, res) {
-		Post.staticTest();
+		Post.getWinner(new Date( 86400 * 1000 * 3 ), function(err, winners) {
+			if (err)
+				app.logger.error(err.stack);
+
+			console.log(winners);
+		});
 
 		Post.find({ limit: 10, sort: 'createdAt DESC' })
 		.populate('author')
