@@ -55,13 +55,13 @@ var Post = {
 			}, isWinner: true
 		})
 		.populate('votes')
-		.exec(function(err, post) {
+		.exec(function(err, posts) {
 			if (err) return callback(err, undefined);
-			else if (post) {
+			else if (posts) {
 				console.log('day winner posts: ');
 				console.log(posts);
 
-				callback(undefined, post);
+				callback(undefined, posts);
 			} else {
 				this.find({
 					createdAt: {
