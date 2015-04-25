@@ -65,6 +65,7 @@ var AuthController = {
 	 * @param {Object} res
 	 */
 	register: function (req, res) {
+		console.log(req);
 		res.view({
 			errors: req.flash('error')
 		});
@@ -132,10 +133,6 @@ var AuthController = {
 			if (err || !user) {
 				return tryAgain(challenges);
 			}
-
-			console.log(user);
-			console.log(challenges);
-			console.log(statuses);
 
 			req.login(user, function (err) {
 				if (err) {
