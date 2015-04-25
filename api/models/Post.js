@@ -43,9 +43,6 @@ var Post = {
 		},
 
 		isStale: function() {
-			console.log(this.createdAt);
-			console.log(new Date(this.createdAt).toDateString());
-			console.log(new Date().toDateString());
 			return new Date(this.createdAt).toDateString() !== new Date().toDateString();
 			console.log();
 		}
