@@ -69,8 +69,6 @@ passport.connect = function (req, query, profile, next) {
 
 	query.profile = profile._json || profile;
 
-	user.photo = provider === 'twitter' ? profile._json.profile_image_url_https : 'http://www.sessionlogs.com/media/icons/defaultIcon.png';
-
 	// Get the authentication provider from the query.
 	query.provider = req.param('provider');
 
@@ -83,6 +81,8 @@ passport.connect = function (req, query, profile, next) {
 	if (!provider){
 		return next(new Error('No authentication provider was identified.'));
 	}
+
+	user.photo = provider === 'twitter' ? profile._json.profile_image_url_https : 'http://www.sessionlogs.com/media/icons/defaultIcon.png';
 
 	// If the profile object contains a list of emails, grab the first one and
 	// add it to the user.
