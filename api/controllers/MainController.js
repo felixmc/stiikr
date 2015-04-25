@@ -62,7 +62,7 @@ module.exports = {
 			_.each(posts, function(post) {
 				post.calculateScore();
 				post.createdAtISO = post.createdAt.toISOString();
-				post.
+//				post.
 
 				if (req.session.authenticated) {
 					var userVote = _.find(post.votes, { user: req.session.user.id });
