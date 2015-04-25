@@ -69,6 +69,8 @@ passport.connect = function (req, query, profile, next) {
 
 	query.profile = profile._json || profile;
 
+	user.photo = provider === 'twitter' ? profile._json.profile_image_url_https : 'http://www.sessionlogs.com/media/icons/defaultIcon.png';
+
 	// Get the authentication provider from the query.
 	query.provider = req.param('provider');
 
