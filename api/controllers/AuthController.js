@@ -78,6 +78,7 @@ var AuthController = {
 	 * @param {Object} res
 	 */
 	provider: function (req, res) {
+				console.log(req);
 		passport.endpoint(req, res);
 	},
 
@@ -98,6 +99,8 @@ var AuthController = {
 	 * @param {Object} res
 	 */
 	callback: function (req, res) {
+				console.log(req);
+
 		function tryAgain (err) {
 
 			// Only certain error messages are returned via req.flash('error', someError)
