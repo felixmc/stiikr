@@ -50,7 +50,7 @@ var Post = {
 		.exec(function(err, post) {
 			if (err) console.log('ERRR');
 
-			console.log(posts);
+			//console.log(posts);
 
 		});
 	}
