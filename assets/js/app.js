@@ -35,10 +35,10 @@ $(document).ready(function() {
 		var $post = $this.closest('.post');
 
 		if (!$('body').hasClass('authenticated')) {
-			$this.removeClass('animated tada');
+			$this.addClass('animated tada');
 			setTimeout(function() {
-				$this.addClass('animated tada');
-			}, 300);
+				$this.removeClass('animated tada');
+			}, 1500);
 		} else if (!$post.is('.stale, .locked')) {
 			var url = '/'+$this.attr('data-action') + '/' + $post.attr('data-id');
 
