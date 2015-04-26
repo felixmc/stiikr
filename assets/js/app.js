@@ -37,11 +37,9 @@ $(document).ready(function() {
 		if (!$('body').hasClass('authenticated') || $post.is('.stale, .locked')) {
 			var $widget = $this.closest('.score-widget');
 
-			$widget.addClass('animated tada');
-			$widget.addClass('error');
+			$widget.addClass('error animated tada');
 			setTimeout(function() {
-				$widget.removeClass('animated tada');
-				$widget.removeClass('error');
+				$widget.removeClass('error animated tada');
 			}, 1500);
 		//} else if (!$post.is('.stale, .locked')) {
 		} else {
