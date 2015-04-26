@@ -40,7 +40,7 @@ $(document).ready(function() {
 				$this.removeClass('animated tada');
 			}, 1500);
 		//} else if (!$post.is('.stale, .locked')) {
-			else {
+		} else {
 			var url = '/'+$this.attr('data-action') + '/' + $post.attr('data-id');
 
 			io.socket.request({
