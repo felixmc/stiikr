@@ -94,7 +94,7 @@ a:hover {
 }
 
 .post .score-widget.error:before {
-	content: 'login to vote on post';
+	content: 'login to do that';
 	position: absolute;
 	padding: 3px 7px;
 //	left: -200px;
@@ -106,14 +106,15 @@ a:hover {
 	width: 140px;
 	text-align: right;
 	font-size: .8em;
+	opacity: .8;
 }
 
 .post.locked .score-widget.error:before {
-	content: 'your vote has been locked';
+	content: 'your vote is locked';
 }
 
 .post.stale .score-widget.error:before {
-	content: 'post is too stale to vote';
+	content: 'this post is stale';
 }
 
 .score-box {
