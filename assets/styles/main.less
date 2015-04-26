@@ -4,8 +4,27 @@
 	color: #fff;
 }
 
-.main-header h1, .main-header p {
+.main-header:after {
+	content: '';
+	display: block;
+	clear: none;
+}
+
+.profile-area {
+	float: right;
+}
+
+.profile-photo {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	border: 2px solid #fff;
+	overflow: hidden;
+}
+
+.main-header h1 {
 	margin: 0;
+	float: left;
 }
 
 .new-header {
