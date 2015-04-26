@@ -7,7 +7,7 @@ $(document).ready(function() {
 	// login form nonsense
 	$(document.body).on('click', '.throw', function(e) {
 		var $this   = $(this);
-		var $header = $this.closest('.header');
+		var $header = $this.closest('.new-header');
 
 		if ($header.hasClass('expanded')) {
 			$this.closest('form').submit();
