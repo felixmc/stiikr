@@ -12,17 +12,20 @@
 </head>
 <body class="{{#if user}}authenticated{{/if}}">
 
-	<h1><a href="/">Stiikr</a></h1>
-	{{#if user}}
-	<p>Welcome {{user.username}}</p>
-	<p><a href="/logout">logout</a></p>
-	{{else}}
-	<p>Welcome! <a href="/auth/twitter">login</a></p>
-	{{/if}}
+	<header class="main-header">
+		<div class="wrapper">
+			<h1><a href="/">Stiikr</a></h1>
+			{{#if user}}
+			<p>Welcome {{user.username}}</p>
+			<p><a href="/logout">logout</a></p>
+			{{else}}
+			<p>Welcome! <a href="/auth/twitter">login</a></p>
+			{{/if}}
+		</div>
+	</header>
 
 
 	{{{body}}}
-
 
 
 	<footer class="footer">
@@ -36,8 +39,6 @@
 			</ul>
 		</nav>
 	</footer>
-
-
 
 
 		<!--
