@@ -93,7 +93,7 @@ a:hover {
 	content: '-';
 }
 
-.post.error:before {
+.post .score-widget.error:before {
 	content: 'login to do that!';
 	position: absolute;
 	padding: 3px 7px;
@@ -103,11 +103,11 @@ a:hover {
 	color: @secondary-accent-color;
 }
 
-.post.error.locked:before {
+.post.locked .score-widget:before {
 	content: 'your vote has been locked';
 }
 
-.post.error.stale:before {
+.post.stale .score-widget:before {
 	content: 'post is too old';
 }
 
