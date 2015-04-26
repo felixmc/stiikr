@@ -35,7 +35,7 @@ $(document).ready(function() {
 		var $post = $this.closest('.post');
 
 		if (!$('body').hasClass('authenticated')) {
-			$this.removeClass('animaged tada');
+			$this.removeClass('animated tada');
 			$this.addClass('animated tada');
 		} else if (!$post.is('.stale, .locked')) {
 			var url = '/'+$this.attr('data-action') + '/' + $post.attr('data-id');
