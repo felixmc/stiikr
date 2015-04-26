@@ -17,21 +17,16 @@
 			<h1><a href="/">Stiikr</a></h1>
 
 			<div class="profile-nav">
-
-			</div>
-
 			{{#if user}}
-
-			<p>Welcome {{user.username}}</p>
-
-			<div class="profile-photo">
-				<img src="{{user.photo}}" />
+				<div class="profile-photo">
+					<img src="{{user.photo}}" />
+				</div>
+				<p><a href="/logout">logout</a></p>
+			{{else}}
+				<p><a href="/auth/twitter">login</a></p>
+			{{/if}}
 			</div>
 
-			<p><a href="/logout">logout</a></p>
-			{{else}}
-			<p>Welcome! <a href="/auth/twitter">login</a></p>
-			{{/if}}
 		</div>
 	</header>
 
