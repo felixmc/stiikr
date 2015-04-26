@@ -41,7 +41,7 @@ $(document).ready(function() {
 			$widget.addClass('error');
 			setTimeout(function() {
 				$this.removeClass('animated tada');
-				$widget.addClass('error');
+				$widget.removeClass('error');
 			}, 1500);
 		//} else if (!$post.is('.stale, .locked')) {
 		} else {
