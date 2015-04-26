@@ -47,6 +47,7 @@
 	padding: @block-size 0;
 	color: @primary-background-color;
 	transition: height .5s;
+	overflow: hidden;
 }
 
 .new-header.expanded {
@@ -97,12 +98,9 @@
 
 .new-header .input {
 	height: @block-size * 2.75;
-	background: @primary-background-color;
 	width: @block-size * 8.5;
+	background: @primary-background-color;
 	margin-right: @block-size;
-//	opacity: 0;
-//	transform: scale(0);
-//	transition: transform .5s, opacity .5s;
 }
 
 .new-header .input input, .new-header .input textarea {
@@ -128,15 +126,14 @@
 }
 
 .new-header.expanded .input {
-//	opacity: 1;
-//	transform: scale(1);
+
 }
 
 .new-header .input.wide {
 	width: @block-size * 15.5;
-	position: absolute;
-	bottom: 10px;
-	left: 380px;
+//	position: absolute;
+//	bottom: 10px;
+//	left: 380px;
 }
 
 .content {
