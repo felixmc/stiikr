@@ -34,7 +34,10 @@ $(document).ready(function() {
 		var $this = $(this);
 		var $post = $this.closest('.post');
 
-		if ($('body').hasClass('authenticated') && !$post.is('.stale, .locked')) {
+		if (!$('body').hasClass('authenticated')) {
+			$this.removeClass('shake');
+			$this.addClass('animated shake');
+		} else if (!$post.is('.stale, .locked')) {
 			var url = '/'+$this.attr('data-action') + '/' + $post.attr('data-id');
 
 			io.socket.request({
