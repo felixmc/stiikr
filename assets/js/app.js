@@ -34,12 +34,13 @@ $(document).ready(function() {
 		var $this = $(this);
 		var $post = $this.closest('.post');
 
-		if (!$('body').hasClass('authenticated')) {
+		if (!$('body').hasClass('authenticated') || $post.is('.stale, .locked')) {
 			$this.addClass('animated tada');
 			setTimeout(function() {
 				$this.removeClass('animated tada');
 			}, 1500);
-		} else if (!$post.is('.stale, .locked')) {
+		//} else if (!$post.is('.stale, .locked')) {
+			else {
 			var url = '/'+$this.attr('data-action') + '/' + $post.attr('data-id');
 
 			io.socket.request({

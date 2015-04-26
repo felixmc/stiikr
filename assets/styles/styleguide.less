@@ -104,6 +104,14 @@ a:hover {
 	color: @secondary-accent-color;
 }
 
+.post.locked .vote-button.tada.before {
+	content: 'your vote has been locked';
+}
+
+.post.stale .vote-button.tada.before {
+	content: 'post is too old';
+}
+
 .score-box {
 	height: @block-size * 2;
 	width: @block-size * 2;
