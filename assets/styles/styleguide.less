@@ -69,6 +69,7 @@ a:hover {
 .post.stale .vote-button {
 	opacity: .5;
 	cursor: default;
+	position: relative;
 }
 
 .vote-button[data-action="upvote"].chosen {
@@ -91,6 +92,14 @@ a:hover {
 
 .vote-button[data-action="downvote"]:after {
 	content: '-';
+}
+
+.vote-button.tada:before {
+	content: 'login to do that!';
+	position: absolute;
+	background: red;
+	padding: 3px 5px;
+	left: -100px;
 }
 
 .score-box {

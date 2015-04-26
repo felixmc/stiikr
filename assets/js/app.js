@@ -38,7 +38,7 @@ $(document).ready(function() {
 			$this.removeClass('animated tada');
 			setTimeout(function() {
 				$this.addClass('animated tada');
-			}, 500);
+			}, 300);
 		} else if (!$post.is('.stale, .locked')) {
 			var url = '/'+$this.attr('data-action') + '/' + $post.attr('data-id');
 
