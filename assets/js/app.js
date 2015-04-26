@@ -8,12 +8,17 @@ $(document).ready(function() {
 	$(document.body).on('click', '.throw', function(e) {
 		var $this   = $(this);
 		var $header = $this.closest('.new-header');
+		var $inputs = $('.input', $header);
 
 		if ($header.hasClass('expanded')) {
 			$this.closest('form').submit();
 		} else {
 			$header.addClass('expanded');
+
+			$inputs.addClass('zoomIn');
 		}
+
+		// TODO: integrate with socket io!!
 
 		e.preventDefault();
 		e.stopPropagation();
@@ -25,24 +30,25 @@ $(document).ready(function() {
 	var voteChosenClass = 'chosen';
 
 	// vote handling
-	$('body.authenticated').on('click', '.post:not(.stale, .locked) .vote-button', function(e) {
+	$(document.body).on('click', '.post .vote-button', function(e) {
 		var $this = $(this);
 		var $post = $this.closest('.post');
 
-		var url = '/'+$this.attr('data-action')+'/' + $post.attr('data-id');
-//		console.log(url);
+		if ($('body').hasClass('authenticated') && !$post.is('.stale, .locked')) {
+			var url = '/'+$this.attr('data-action') + '/' + $post.attr('data-id');
 
-		io.socket.request({
-			url: url,
-			method: 'POST'
-		}, function (err, response) {
-				if (response.statusCode == 200) {
-					if (!$this.hasClass(voteChosenClass)) {
-						$('.vote-button', $post).removeClass(voteChosenClass);
+			io.socket.request({
+				url: url,
+				method: 'POST'
+			}, function (err, response) {
+					if (response.statusCode == 200) {
+						if (!$this.hasClass(voteChosenClass)) {
+							$('.vote-button', $post).removeClass(voteChosenClass);
+						}
+						$this.toggleClass(voteChosenClass);
 					}
-					$this.toggleClass(voteChosenClass);
-				}
-		});
+			});
+		}
 
 		e.preventDefault();
 		e.stopPropagation();
