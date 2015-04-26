@@ -35,9 +35,13 @@ $(document).ready(function() {
 		var $post = $this.closest('.post');
 
 		if (!$('body').hasClass('authenticated') || $post.is('.stale, .locked')) {
+			var $widget = $this.closest('.score-widget');
+
 			$this.addClass('animated tada');
+			$widget.addClass('error');
 			setTimeout(function() {
 				$this.removeClass('animated tada');
+				$widget.addClass('error');
 			}, 1500);
 		//} else if (!$post.is('.stale, .locked')) {
 		} else {

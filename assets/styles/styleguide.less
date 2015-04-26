@@ -46,7 +46,6 @@ a:hover {
 	transition: background-color .5s, color .5s;
 	box-shadow: inset 0 0 0 3px @primary-foreground-color;
 	color: @primary-foreground-color;
-	position: relative;
 }
 
 .vote-button:first-of-type {
@@ -94,7 +93,7 @@ a:hover {
 	content: '-';
 }
 
-.vote-button.tada:before {
+.post.error:before {
 	content: 'login to do that!';
 	position: absolute;
 	padding: 3px 7px;
@@ -104,11 +103,11 @@ a:hover {
 	color: @secondary-accent-color;
 }
 
-.post.locked .vote-button.tada.before {
+.post.error.locked:before {
 	content: 'your vote has been locked';
 }
 
-.post.stale .vote-button.tada.before {
+.post.error.stale:before {
 	content: 'post is too old';
 }
 
