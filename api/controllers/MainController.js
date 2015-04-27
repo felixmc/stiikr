@@ -192,6 +192,27 @@ module.exports = {
 		});
 	},
 
+	fixScores: function(req, res) {
+
+		Post.find({})
+		.populate('votes')
+		.exec(function(err, posts) {
+			if (err) sails.error(err.stack);
+
+			async.each(posts, function(post, callback) {
+				post.calculateScore();
+				Post.update(post.id, post, function(err, updatedPost) {
+					if (err) callback(err);
+					else callback(null):
+				});
+			}, function(err) {
+				if (err) sails.error(err.stack);
+				res.send('Posts updated!\n' + (err ? 'With errors: ' + err : 'No Errors.'));
+			});
+		});
+
+	},
+
 	upvote: function(req, res) {
 		handleVote(req, res, 1);
 	},
