@@ -201,9 +201,10 @@ module.exports = {
 
 			async.each(posts, function(post, callback) {
 				post.calculateScore();
+				post.isWinner = false;
 				Post.update(post.id, post, function(err, updatedPost) {
 					if (err) callback(err);
-					else callback(null):
+					else callback(null);
 				});
 			}, function(err) {
 				if (err) sails.error(err.stack);
