@@ -2,6 +2,8 @@
 
 $(document).ready(function() {
 
+	$(document.body).addClass('pageLoaded');
+
 	$("time.timeago").timeago();
 
 	// login form nonsense

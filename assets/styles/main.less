@@ -45,15 +45,20 @@
 
 .new-header {
 	background: @primary-foreground-color;
-	height: @block-size;
-	padding: @block-size 0;
 	color: @primary-background-color;
 	transition: height .5s;
 	overflow: hidden;
+	height: 0;
+	padding: 0;
+	transition: height 1s, padding 1s;
 }
 
-.new-header.locked {
-//	background: @secondary-background-color;
+.pageLoaded .new-header {
+	height: @block-size;
+	padding: @block-size 0;
+}
+
+.pageLoaded .new-header.locked {
 	height: @block-size / 2;
 	padding: (@block-size / 8 * 3) 0;
 }
