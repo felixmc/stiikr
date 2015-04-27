@@ -172,7 +172,6 @@ module.exports = {
 		today.setHours(0,0,0,0);
 
 		for (var i = 1; i < today.getDate(); i++) {
-			console.log(i);
 			dates.push(new Date(today.getTime() - (i * dayTime)));
 		}
 
