@@ -1,10 +1,12 @@
 <div class="content wrapper">
 {{#each timeline}}
+	{{#if this.winners}}
 	<div class="stuck">
 		<time class="wall-day"><span class="day">{{this.date.day}}<span> {{this.date.month}} {{this.date.year}}</time>
 		{{#each this.winners}}
 			{{> post}}
 		{{/each}}
 	</div>
+	{{/if}}
 {{/each}}
 </div>
