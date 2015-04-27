@@ -205,7 +205,7 @@ a:hover {
 }
 
 .stuck {
-	margin: @block-size 0;
+	margin: (@block-size * 2) 0;
 }
 
 .stuck:first-of-type {
@@ -218,6 +218,15 @@ a:hover {
 	height: @block-size * 5;
 	display: block;
 	background: @secondary-background-color;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+.stuck .wall-day .day {
+	font-size: 5em;
+	display: block;
+	padding-top: 20px;
 }
 
 .stuck .post .post-wrapper {
