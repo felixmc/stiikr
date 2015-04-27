@@ -109,7 +109,7 @@ module.exports = {
 					if (err) sails.log.error(err);
 					else if (posts.length) {
 						data.postLocked = true;
-						data.postLockedTime = ((10 * 60 * 1000) - (new Date().getTime() - posts[0].createdAt.getTime())) / (60 * 1000);
+						data.postLockedTime = (((10 * 60 * 1000) - (new Date().getTime() - posts[0].createdAt.getTime())) / (60 * 1000)).toFixed(1);
 					}
 					res.render('home', data);
 				});
