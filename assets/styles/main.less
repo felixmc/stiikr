@@ -54,6 +54,16 @@
 
 .new-header.locked {
 	background: @secondary-background-color;
+	height: @block-size / 2;
+}
+
+.new-header.locked .wrapper > * {
+	display: none;
+}
+
+.new-header.locked .wrapper > .lock-msg {
+	display: block;
+	color: @primary-foreground-color;
 }
 
 .new-header.expanded {
