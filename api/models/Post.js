@@ -65,9 +65,7 @@ var Post = {
 
 		Self.find({
 			createdAt: createdAt, isWinner: true
-		})
-		.populate('votes')
-		.exec(function(err, posts) {
+		}).exec(function(err, posts) {
 			if (err) return callback(err, undefined);
 			else if (posts.length > 0) {
 //				console.log('day winner posts: ');
@@ -76,17 +74,16 @@ var Post = {
 				callback(undefined, posts);
 			} else {
 				Self.find({ createdAt: createdAt })
-				.populate('votes')
+				.sort({ score: 'desc' })
 				.exec(function(err, posts) {
-//					console.log('day posts: ');
-//					console.log(posts);
-
 					if (err) return callback(err, undefined);
 					else {
-						var maxScore = _.reduce(posts, function (cur, post) {
-							post.score = post.calculateScore();
-							return Math.max(cur, post.score);
-						}, 0);
+						var maxScore = posts.length ? posts[0] : 0;
+
+//						_.reduce(posts, function (cur, post) {
+//							post.score = post.calculateScore();
+//							return Math.max(cur, post.score);
+//						}, 0);
 
 						var winners = _.filter(posts, function (post) {
 							return post.score == maxScore;
