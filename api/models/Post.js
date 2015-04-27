@@ -65,7 +65,7 @@ var Post = {
 
 		Self.find({
 			createdAt: createdAt, isWinner: true
-		}).exec(function(err, posts) {
+		}).populate('author').exec(function(err, posts) {
 			if (err) return callback(err, null);
 			else if (posts.length > 0) {
 //				console.log('day winner posts: ');
@@ -74,6 +74,7 @@ var Post = {
 				callback(null, posts);
 			} else {
 				Self.find({ createdAt: createdAt })
+				.populate('author')
 				.sort({ score: 'desc' })
 				.exec(function(err, posts) {
 					if (err) return callback(err, null);
