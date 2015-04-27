@@ -163,8 +163,32 @@ module.exports = {
 	},
 
 	wall: function(req, res) {
-//		Post.find
-		res.send('wall goes here');
+		var data = { wallSelected: true };
+
+		var dates = [];
+
+		var today   = new Date().setHours(0,0,0,0);
+		var datTime = 1000 * 60 * 60 * 24;
+		var maxDays = 7;
+
+		for (var i = 1; i <= maxDays; i++) {
+			dates.push(new Date(today.getTime() - (i * dayTime)));
+		}
+
+		async.map(dates, function(date, callback) {
+			Post.findWinner(date, function(err, winner) {
+				if (err) callback(err, null);
+				else {
+					callback(null, { date: date, winners: winner });
+				}
+			});
+		}, function(err, winners) {
+			if (err) sails.log.error(err.stack);
+			else {
+				data.timeline = winners;
+				res.render('wall', data);
+			}
+		});
 	},
 
 	upvote: function(req, res) {
