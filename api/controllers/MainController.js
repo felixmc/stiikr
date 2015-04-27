@@ -167,7 +167,8 @@ module.exports = {
 
 		var dates = [];
 
-		var today   = new Date().setHours(0,0,0,0);
+		var today   = new Date();
+		today.setHours(0,0,0,0);
 		var datTime = 1000 * 60 * 60 * 24;
 		var maxDays = 7;
 
