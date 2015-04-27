@@ -19,8 +19,8 @@
 
 			<nav class="main-nav">
 				<ul>
-					<li class="selected"><a href="/">Today</a></li>
-					<li><a href="/wall">The Wall</a></li>
+					<li class="{{#if todaySelected}}selected{{/if}}"><a href="/">Today</a></li>
+					<li class="{{#if wallSelected}}selected{{/if}}"><a href="/wall">The Wall</a></li>
 				</ul>
 			</nav>
 
@@ -29,9 +29,9 @@
 				<div class="profile-photo">
 					<img src="{{user.photo}}" />
 				</div>
-				<p><a href="/logout">logout</a></p>
+				<p><a href="/logout">Logout</a></p>
 			{{else}}
-				<p><a href="/auth/twitter">login</a></p>
+				<p><a href="/auth/twitter">Login</a></p>
 			{{/if}}
 			</div>
 

@@ -102,7 +102,7 @@ module.exports = {
 				}
 			});
 
-			var data = { user: req.session.user, posts: posts };
+			var data = { user: req.session.user, posts: posts, todaySelected: true };
 
 			if (req.session.authenticated) {
 				User.findLatestPosts(req.user.id, function(err, posts) {
