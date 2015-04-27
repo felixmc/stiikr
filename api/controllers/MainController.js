@@ -23,8 +23,7 @@ function handleVote(req, res, voteValue) {
 				var vote = _.find(post.votes, { user: req.session.user.id });
 
 				if (vote) {
-//					sails.log.debug(vote);
-									// TODO: check if vote is older than 10 minutes
+					// check if vote is older than 10 minutes
 					if (vote.isLocked())
 						return cannotVote('vote is locked');
 
@@ -103,7 +102,22 @@ module.exports = {
 				}
 			});
 
-			res.render('home', { user: req.session.user, posts: posts });
+			var data = { user: req.session.user, posts: posts };
+
+			if (req.session.authenticated) {
+				req.session.user.findLatestPosts(function(err, posts) {
+					if (err) sails.log.error(err);
+
+					if (posts.length) {
+						data.postLocked = true;
+					}
+
+					res.render('home', data);
+				});
+			} else {
+				res.render('home', data);
+			}
+
 		});
 	},
 

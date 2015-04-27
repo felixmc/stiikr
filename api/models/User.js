@@ -8,7 +8,16 @@ var User = {
 		photo     : { type: 'string', required: true },
 		passports : { collection: 'Passport', via: 'user' },
 		posts     : { collection: 'Post', via: 'author' },
-		votes     : { collection: 'Vote', via: 'user' }
+		votes     : { collection: 'Vote', via: 'user' },
+
+		findLatestPosts: function(callback) {
+			Vote.find({
+				author: this.id,
+				createdAt: {
+					'>': new Date(new Date() - (60 * 10 * 1000)),
+				}
+			}, callback);
+		}
 	}
 };
 
