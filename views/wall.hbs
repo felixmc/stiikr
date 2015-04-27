@@ -1,6 +1,10 @@
+{{> new}}
+
+<div class="content wrapper">
 {{#each timeline}}
 	<p>{{this.date}}</p>
 	{{#each this.winners}}
 		{{> post}}
 	{{/each}}
 {{/each}}
+</div>
