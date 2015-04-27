@@ -44,6 +44,7 @@ function handleVote(req, res, voteValue) {
 							res.serverError();
 						} else {
 							req.socket.emit('voteUpdate', { post: post.id, score: post.calculateScore() + (newVote.value - vote.value) });
+							updatePost();
 							res.ok();
 						}
 					});
@@ -59,6 +60,7 @@ function handleVote(req, res, voteValue) {
 						} else {
 							req.socket.emit('voteUpdate', { post: post.id, score: post.calculateScore() + voteValue });
 							post.votes.push(newVote);
+							updatePost();
 							res.ok();
 						}
 					});
