@@ -93,7 +93,7 @@ module.exports = {
 		}).populate('author')
 		.populate('votes')
 		.sort({ createdAt: 'desc' })
-		.paginate({ page: req.params('page') || 0, limit: 20 })
+		.paginate({ page: req.param('page') || 0, limit: 20 })
 		.exec(function(err, posts) {
 			if (err)
 				sails.log.error(err);
