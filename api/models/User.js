@@ -12,7 +12,7 @@ var User = {
 	},
 
 	findLatestPosts: function(userId, callback) {
-		Vote.find({
+		Post.find({
 			author: userId,
 			createdAt: {
 				'>': new Date(new Date() - (60 * 10 * 1000)),
