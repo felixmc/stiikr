@@ -78,7 +78,9 @@ var Post = {
 				.exec(function(err, posts) {
 					if (err) return callback(err, null);
 					else {
-						var maxScore = posts.length ? posts[0] : 0;
+						var maxScore = posts.length ? posts[0].score : 0;
+
+						console.log('maxScore: ' + maxScore);
 
 //						_.reduce(posts, function (cur, post) {
 //							post.score = post.calculateScore();
