@@ -9,15 +9,15 @@ var User = {
 		passports : { collection: 'Passport', via: 'user' },
 		posts     : { collection: 'Post', via: 'author' },
 		votes     : { collection: 'Vote', via: 'user' },
+	},
 
-		findLatestPosts: function(callback) {
-			Vote.find({
-				author: this.id,
-				createdAt: {
-					'>': new Date(new Date() - (60 * 10 * 1000)),
-				}
-			}, callback);
-		}
+	findLatestPosts: function(userId, callback) {
+		Vote.find({
+			author: userId,
+			createdAt: {
+				'>': new Date(new Date() - (60 * 10 * 1000)),
+			}
+		}, callback);
 	}
 };
 

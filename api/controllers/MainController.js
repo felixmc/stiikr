@@ -105,7 +105,7 @@ module.exports = {
 			var data = { user: req.session.user, posts: posts };
 
 			if (req.session.authenticated) {
-				req.session.user.findLatestPosts(function(err, posts) {
+				User.findLatestPosts(req.session.user.id, function(err, posts) {
 					if (err) sails.log.error(err);
 
 					if (posts.length) {
