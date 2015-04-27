@@ -167,14 +167,11 @@ module.exports = {
 
 		var dates = [];
 
-		var today = new Date();
-		today.setHours(0,0,0,0);
 		var dayTime = 1000 * 60 * 60 * 24;
+		var today   = new Date(new Date().getTime() - dayTime);
+		today.setHours(0,0,0,0);
 
-		console.log(today.toString());
-		console.log(today.getUTCDay());
-
-		for (var i = 1; i < today.getUTCDay(); i++) {
+		for (var i = 1; i < today.getDate(); i++) {
 			console.log(i);
 			dates.push(new Date(today.getTime() - (i * dayTime)));
 		}
@@ -183,7 +180,7 @@ module.exports = {
 			Post.findWinner(date, function(err, winner) {
 				if (err) callback(err, null);
 				else {
-					callback(null, { date: { day: date.getUTCDay(), month: DateService.month(date.getMonth()), year: date.getFullYear() }, winners: winner });
+					callback(null, { date: { day: date.getDate(), month: DateService.month(date.getMonth()), year: date.getFullYear() }, winners: winner });
 				}
 			});
 		}, function(err, winners) {
