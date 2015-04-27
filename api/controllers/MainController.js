@@ -149,6 +149,11 @@ module.exports = {
 		});
 	},
 
+	wall: function(req, res) {
+//		Post.find
+		res.send('wall goes here');
+	},
+
 	upvote: function(req, res) {
 //		console.log('upvote ' + req.param('id'));
 		handleVote(req, res, 1);
