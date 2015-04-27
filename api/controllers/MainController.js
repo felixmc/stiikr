@@ -168,7 +168,7 @@ module.exports = {
 		var dates = [];
 
 		var dayTime = 1000 * 60 * 60 * 24;
-		var today   = new Date(new Date().getTime() - dayTime);
+		var today   = new Date();//new Date().getTime() - dayTime);
 		today.setHours(0,0,0,0);
 
 		for (var i = 1; i < today.getDate(); i++) {
