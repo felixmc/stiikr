@@ -171,6 +171,9 @@ module.exports = {
 		today.setHours(0,0,0,0);
 		var dayTime = 1000 * 60 * 60 * 24;
 
+		console.log(today.toString());
+		console.log(today.getUTCDay());
+
 		for (var i = 1; i < today.getUTCDay(); i++) {
 			console.log(i);
 			dates.push(new Date(today.getTime() - (i * dayTime)));
