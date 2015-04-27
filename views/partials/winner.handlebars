@@ -1,0 +1,8 @@
+<div class="post {{#if this.preview}}post-preview{{/if}}" data-id="{{this.id}}">
+	<div class="post-wrapper">
+		<h3><a href="/post/{{this.id}}">{{this.title}}</a></h3>
+	<!--		by <a href="//twitter.com/{{this.author.username}}" target="_blank">@{{this.author.username}}</a>-->
+		<div class="profile-photo"><a href="//twitter.com/{{this.author.username}}" target="_blank"><img src="{{user.photo}}" /></a></p>
+		<p class="post-content">{{this.content}}</p>
+	</div>
+</div>
