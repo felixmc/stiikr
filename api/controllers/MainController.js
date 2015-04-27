@@ -107,13 +107,10 @@ module.exports = {
 			if (req.session.authenticated) {
 				User.findLatestPosts(req.user.id, function(err, posts) {
 					if (err) sails.log.error(err);
-
-					console.log(posts);
-
-					if (posts.length) {
+					else if (posts.length) {
 						data.postLocked = true;
+						data.postLockedTime = (60 * 10 * 1000) - (new Date().getTime() - posts[0].createdAt.getTime()) / (60 * 1000);
 					}
-
 					res.render('home', data);
 				});
 			} else {

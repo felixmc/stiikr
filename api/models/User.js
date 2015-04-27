@@ -17,7 +17,7 @@ var User = {
 			createdAt: {
 				'>': new Date(new Date() - (60 * 10 * 1000)),
 			}
-		}, callback);
+		}).sort({ createdAt: 'desc' }).exec(callback);
 	}
 };
 
