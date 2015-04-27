@@ -180,7 +180,7 @@ module.exports = {
 			Post.findWinner(date, function(err, winner) {
 				if (err) callback(err, null);
 				else {
-					callback(null, { date: { day: date.getDay(), month: DateService.month(date.getMonth()), year: date.getFullYear() }, winners: winner });
+					callback(null, { date: { day: date.getUTCDay(), month: DateService.month(date.getMonth()), year: date.getFullYear() }, winners: winner });
 				}
 			});
 		}, function(err, winners) {
