@@ -13,15 +13,15 @@ function handleVote(req, res, voteValue) {
 				res.status(403).send('can not vote: ' + message);
 			}
 
+			function updatePost() {
+				post.calculateScore();
+				Post.update(post.id, post).exec(function(err, post) {
+					if (err) sails.log.error(err);
+				});
+			}
+
 			if (post.length) {
 				post = post[0];
-
-				function updatePost() {
-					post.calculateScore();
-					Post.update(post.id, post).exec(function(err, post) {
-						if (err) sails.log.error(err);
-					});
-				}
 
 				// if post is not from today..
 				if (post.isStale())
