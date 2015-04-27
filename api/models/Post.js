@@ -80,8 +80,6 @@ var Post = {
 					else {
 						var maxScore = posts.length ? posts[0].score : 0;
 
-						console.log('maxScore: ' + maxScore);
-
 //						_.reduce(posts, function (cur, post) {
 //							post.score = post.calculateScore();
 //							return Math.max(cur, post.score);
@@ -98,7 +96,6 @@ var Post = {
 							});
 						});
 
-						console.log(winners);
 						callback(null, winners);
 					}
 				});
