@@ -108,6 +108,8 @@ module.exports = {
 				User.findLatestPosts(req.session.user.id, function(err, posts) {
 					if (err) sails.log.error(err);
 
+					console.log(posts);
+
 					if (posts.length) {
 						data.postLocked = true;
 					}
