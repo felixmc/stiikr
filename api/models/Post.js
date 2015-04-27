@@ -25,6 +25,12 @@ var Post = {
 			via: 'post'
 		},
 
+		score: {
+			type: 'integer',
+			required: false,
+			defaultsTo: 0
+		},
+
 		isLocked: {
 			type: 'boolean',
 			required: false

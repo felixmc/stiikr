@@ -1,4 +1,4 @@
-
+'use strict';
 
 function handleVote(req, res, voteValue) {
 	if (req.method === 'POST' && req.session.authenticated) {
@@ -13,8 +13,15 @@ function handleVote(req, res, voteValue) {
 				res.status(403).send('can not vote: ' + message);
 			}
 
-			if (post) {
+			if (post.length) {
 				post = post[0];
+
+				function updatePost() {
+					post.calculateScore();
+					Post.update(post.id, post).exec(function(err, post) {
+						if (err) sails.log.error(err);
+					});
+				}
 
 				// if post is not from today..
 				if (post.isStale())
@@ -27,8 +34,9 @@ function handleVote(req, res, voteValue) {
 					if (vote.isLocked())
 						return cannotVote('vote is locked');
 
-					var newValue = vote.value == voteValue ? 0 : voteValue;
-					Vote.update(vote.id, { value: newValue })
+					var oldValue = vote.value;
+					vote.value = vote.value == voteValue ? 0 : voteValue;
+					Vote.update(vote.id, vote)
 					.exec(function(err, newVote) {
 						newVote = newVote[0];
 						if (err) {
@@ -44,12 +52,13 @@ function handleVote(req, res, voteValue) {
 						user:  req.session.user.id,
 						post:  post.id,
 						value: voteValue
-					}).exec(function(err, vote) {
+					}).exec(function(err, newVote) {
 						if (err) {
 							sails.log.error(err);
 							res.serverError();
 						} else {
 							req.socket.emit('voteUpdate', { post: post.id, score: post.calculateScore() + voteValue });
+							post.votes.push(newVote);
 							res.ok();
 						}
 					});
@@ -83,12 +92,14 @@ module.exports = {
 			sort: 'createdAt DESC'
 		}).populate('author')
 		.populate('votes')
+		.sort({ createdAt: 'desc' })
+		.paginate({ page: req.params('page') || 0, limit: 20 })
 		.exec(function(err, posts) {
 			if (err)
 				sails.log.error(err);
 
 			_.each(posts, function(post) {
-				post.calculateScore();
+//				post.calculateScore();
 				post.createdAtISO = post.createdAt.toISOString();
 				post.stale = post.isStale();
 				post.preview = true;
@@ -130,7 +141,7 @@ module.exports = {
 				res.serverError();
 			} else if (post) {
 				post = post[0];
-				post.calculateScore();
+//				post.calculateScore();
 				post.createdAtISO = post.createdAt.toISOString();
 				post.stale = post.isStale();
 

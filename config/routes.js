@@ -13,12 +13,14 @@
 
 module.exports.routes = {
 
-  '/': 'MainController',
-  'post /new': 'MainController.new',
+	'get /': 'MainController.index',
+	'get /:page([0-9]+)': 'MainController.index',
+	'post /new': 'MainController.new',
 	'post /upvote/:id([0-9a-f]{24})': 'MainController.upvote',
 	'post /downvote/:id([0-9a-f]{24})': 'MainController.downvote',
 	'get /post/:id([0-9a-f]{24})': 'MainController.post',
-	
+	'get /wall': 'MainController.wall',
+
 	/* AUTH */
 	'get /login': 'AuthController.login',
 	'get /logout': 'AuthController.logout',
