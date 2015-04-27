@@ -2,7 +2,7 @@
 {{#each timeline}}
 	{{#if this.winners}}
 	<div class="stuck wrapper">
-		<time class="wall-day"><span class="day">{{this.date.day}}</span>span> {{this.date.month}} {{this.date.year}}</time>
+		<time class="wall-day"><span class="day">{{this.date.day}}</span> {{this.date.month}} {{this.date.year}}</time>
 		{{#each this.winners}}
 			{{> winner}}
 		{{/each}}
