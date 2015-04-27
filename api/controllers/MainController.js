@@ -141,7 +141,7 @@ module.exports = {
 			if (err) {
 				sails.log.error(err);
 				res.serverError();
-			} else if (post) {
+			} else if (post.length) {
 				post = post[0];
 //				post.calculateScore();
 				post.createdAtISO = post.createdAt.toISOString();
