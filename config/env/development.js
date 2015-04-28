@@ -12,16 +12,16 @@
 
 module.exports = {
 
-	proxyHost: 'http://146.148.67.223/',
-	
-	
-  /***************************************************************************
-   * Set the default database connection for models in the development       *
-   * environment (see config/connections.js and config/models.js )           *
-   ***************************************************************************/
+	proxyHost: 'http://stiikr.com/',
 
-  // models: {
-  //   connection: 'someMongodbServer'
-  // }
+
+	/***************************************************************************
+	 * Set the default database connection for models in the development       *
+	 * environment (see config/connections.js and config/models.js )           *
+	 ***************************************************************************/
+
+	// models: {
+	//   connection: 'someMongodbServer'
+	// }
 
 };
