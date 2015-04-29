@@ -117,7 +117,7 @@ module.exports = {
 				sails.log.error(err);
 				res.serverError(err);
 			} else {
-				var data = { user: req.session.user, posts: posts, todaySelected: true };
+				var data = { user: req.session.user, posts: posts, todaySelected: true, title: 'Home' };
 
 				if (req.session.authenticated) {
 					User.findLatestPosts(req.user.id, function(err, posts) {
@@ -172,7 +172,7 @@ module.exports = {
 					}
 				}
 
-				res.render('post', post);
+				res.render('post', { post: post, title: post.title });
 			} else {
 				res.notFound();
 			}
@@ -180,7 +180,7 @@ module.exports = {
 	},
 
 	wall: function(req, res) {
-		var data = { wallSelected: true };
+		var data = { wallSelected: true, title: 'Wall' };
 
 		var dates = [];
 
