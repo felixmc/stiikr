@@ -42,7 +42,7 @@ a:hover {
 	position: relative;
 }
 
-.vote-button, a.vote-button {
+.vote-button, a.vote-button, social-button {
 	width: @block-size * .925;
 	height: @block-size * .925;
 	display: block;
@@ -95,6 +95,18 @@ a:hover {
 
 .vote-button[data-action="downvote"]:after {
 	content: '-';
+}
+
+.social-button {
+	display: none;
+	position: absolute;
+	background-color: @secondary-background-color;
+	right: -100px;
+	top: 0;
+}
+
+.vote-button[data-action="upvote"] ~ .social-button {
+	display: block;
 }
 
 .post .score-widget.error:before {
