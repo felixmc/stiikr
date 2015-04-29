@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 	$("time.timeago").timeago();
 
-	$(document.body).on('click', '.load-more', function(e) {
+	$(document.body).on('click', '.load-more a', function(e) {
 		var $this = $(this);
 		var $content = $('.content');
 		var page = Number($content.attr('data-page'));
