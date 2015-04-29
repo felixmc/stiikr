@@ -14,7 +14,12 @@ $(document).ready(function() {
 		$get('/posts/' + page, function(data) {
 			$this.before(data);
 			$content.attr('data-page', page + 1);
-		})
+		});
+
+		e.preventDefault();
+		e.stopPropagation();
+
+		return false;
 	});
 
 	// new post animation
