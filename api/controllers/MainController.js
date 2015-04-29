@@ -74,62 +74,79 @@ function handleVote(req, res, voteValue) {
 	}
 }
 
+function getPosts(page, user, callback) {
+	Post.find({
+		createdAt: {
+			'>=': new Date(new Date().setHours(0,0,0,0)),
+			'<':  new Date(new Date().setHours(24,0,0,0))
+		},
+		limit: 10,
+		sort: 'createdAt DESC'
+	}).populate('author')
+	.populate('votes')
+	.sort({ createdAt: 'desc' })
+	.paginate({ page: page, limit: 20 })
+	.exec(function(err, posts) {
+		if (err)
+			return callback(err, null);
+
+		_.each(posts, function(post) {
+			post.createdAtISO = post.createdAt.toISOString();
+			post.stale = post.isStale();
+			post.preview = true;
+
+			if (user) {
+				var userVote = _.find(post.votes, { user: user.id });
+				if (userVote && userVote.value != 0) {
+					post.locked = userVote.isLocked;
+					post[userVote.value > 0 ? 'upvote' : 'downvote'] = true;
+				}
+			}
+		});
+
+		callback(null, posts);
+	});
+}
+
 // Main Controller
 module.exports = {
 
 	index: function(req, res) {
-//		Post.getWinner(new Date(new Date().getTime() - (86400 * 1000 * 4) ), function(err, winners) {
-//			if (err)
-//				app.logger.error(err.stack);
-//
-//			console.log(winners);
-//		});
-
-		Post.find({
-			createdAt: {
-				'>=': new Date(new Date().setHours(0,0,0,0)),
-				'<':  new Date(new Date().setHours(24,0,0,0))
-			},
-			limit: 10,
-			sort: 'createdAt DESC'
-		}).populate('author')
-		.populate('votes')
-		.sort({ createdAt: 'desc' })
-		.paginate({ page: req.param('page') || 0, limit: 20 })
-		.exec(function(err, posts) {
-			if (err)
+		getPosts(req.param('page') || 0, req.user, function(err, posts) {
+			if (err) {
 				sails.log.error(err);
-
-			_.each(posts, function(post) {
-//				post.calculateScore();
-				post.createdAtISO = post.createdAt.toISOString();
-				post.stale = post.isStale();
-				post.preview = true;
+				res.serverError(err);
+			} else {
+				var data = { user: req.session.user, posts: posts, todaySelected: true };
 
 				if (req.session.authenticated) {
-					var userVote = _.find(post.votes, { user: req.session.user.id });
-					if (userVote && userVote.value != 0) {
-						post.locked = userVote.isLocked;
-						post[userVote.value > 0 ? 'upvote' : 'downvote'] = true;
-					}
-				}
-			});
-
-			var data = { user: req.session.user, posts: posts, todaySelected: true };
-
-			if (req.session.authenticated) {
-				User.findLatestPosts(req.user.id, function(err, posts) {
-					if (err) sails.log.error(err);
-					else if (posts.length) {
-						data.postLocked = true;
-						data.postLockedTime = (((10 * 60 * 1000) - (new Date().getTime() - posts[0].createdAt.getTime())) / (60 * 1000)).toFixed(1);
-					}
+					User.findLatestPosts(req.user.id, function(err, posts) {
+						if (err) sails.log.error(err);
+						else if (posts.length) {
+							data.postLocked = true;
+							data.postLockedTime = (((10 * 60 * 1000) - (new Date().getTime() - posts[0].createdAt.getTime())) / (60 * 1000)).toFixed(1);
+						}
+						res.render('home', data);
+					});
+				} else {
 					res.render('home', data);
-				});
-			} else {
-				res.render('home', data);
+				}
 			}
+		});
+	},
 
+	posts: function(req, res) {
+		getPosts(req.param('page') || 0, req.user, function(err, posts) {
+			if (err) {
+				sails.log.error(err);
+				res.serverError(err);
+			} else {
+				var data = { user: req.session.user, posts: posts, todaySelected: true };
+
+				var data = { posts: posts, layout: null };
+
+				res.render('posts', data);
+			}
 		});
 	},
 

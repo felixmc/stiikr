@@ -6,7 +6,18 @@ $(document).ready(function() {
 
 	$("time.timeago").timeago();
 
-	// login form nonsense
+	$(document.body).on('click', '.load-more', function(e) {
+		var $this = $(this);
+		var $content = $('.content');
+		var page = Number($content.attr('data-page'));
+
+		$get('/posts/' + page, function(data) {
+			$this.before(data);
+			$content.attr('data-page', page + 1);
+		})
+	});
+
+	// new post animation
 	$(document.body).on('click', '.throw', function(e) {
 		var $this   = $(this);
 		var $header = $this.closest('.new-header');

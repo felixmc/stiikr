@@ -15,6 +15,7 @@ module.exports.routes = {
 
 	'get /': 'MainController.index',
 	'get /:page([0-9]+)': 'MainController.index',
+	'get /posts/:page([0-9]+)': 'MainController.posts',
 	'post /new': 'MainController.new',
 	'post /upvote/:id([0-9a-f]{24})': 'MainController.upvote',
 	'post /downvote/:id([0-9a-f]{24})': 'MainController.downvote',
