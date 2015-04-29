@@ -1,7 +1,8 @@
 <div class="score-widget">
 	<a href="#" class="vote-button{{#if this.upvote}} chosen{{/if}}" data-action="upvote" role="button"></a>
 	<a href="#" class="vote-button{{#if this.downvote}} chosen{{/if}}" data-action="downvote" role="button"></a>
-	<a href="https://twitter.com/share" class="social-button tw twitter-share-button" role="button" data-via="stiikr" data-size="small" data-text="{{this.title}}" data-count="none"></a>
-	<a href="#" class="social-button fb fb-share-button" role="button" data-layout="link"></a>
+	<a href="https://twitter.com/share?url={{this.url}}&via=stiikr&
+  text={{this.title}}" class="social-button tw" role="button"></a>
+	<a href="http://www.facebook.com/share.php?u={{this.url}}&title={{this.title}}" class="social-button fb" role="button"></a>
 	<span class="score-box" data-score="{{this.score}}"></span>
 </div>

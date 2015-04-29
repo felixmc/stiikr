@@ -51,6 +51,10 @@ var Post = {
 		isStale: function() {
 			return new Date(this.createdAt).toDateString() !== new Date().toDateString();
 			console.log();
+		},
+
+		url: function() {
+			return 'http://stiikr.com/post/' + this.id;
 		}
 
 	},
